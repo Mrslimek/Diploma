@@ -1,0 +1,100 @@
+.popular__goods-promotion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.popular__goods-promotion-item {
+    padding: 8px 116px 8px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 569px;
+    position: relative;
+
+    &:first-child {
+        background: var(--Surface-Warning-Default, #ffd79d);
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: 116px 116px;
+    }
+
+    &:last-child {
+        background: #aee9d1;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: 116px 116px;
+    }
+}
+
+.popular__goods-promotion-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 0 1 215px;
+
+    & h3 {
+        color: var(--Text-Default, #202223);
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: "SF Pro Text";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+    }
+
+    & button {
+        border-radius: 5px;
+        border: 1px solid var(--Border-Default, #8c9196);
+        background: #fff;
+        padding: 8px 16px;
+        color: var(--Text-Default, #202223);
+        text-align: center;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: "SF Pro Text";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+    }
+}
+
+
+
+@media (min-width:992px) {
+    .popular__goods-promotion{
+        flex-direction: initial;
+        align-items: stretch;
+    }
+
+    .popular__goods-promotion-item-info {
+        flex: 0 1 390px;
+        align-items: flex-start;
+        gap: 17px;
+
+
+        & h3 {
+            font-size: 20px;
+        }
+    }
+
+    .popular__goods-promotion-item{
+        justify-content: initial;
+        padding: 24px 150px 24px 24px;
+        &:first-child {
+            background: url(../img/promotionDog.png) no-repeat 100% 100%/149px 149px, var(--Surface-Warning-Default, #ffd79d);
+        }
+    
+        &:last-child {
+            background:url(../img/promotionCat.png) no-repeat 100% 100%/149px 143px, #aee9d1;
+        }
+    }
+
+
+    .popular__goods-promotion{
+        gap: 32px;
+    }
+}

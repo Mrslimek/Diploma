@@ -1,0 +1,135 @@
+.about__owner {
+    padding: 16px 0;
+    background: #fff;
+}
+
+.about__owner-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about__owner-title {
+    color: var(--Text-Default, #202223);
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "SF Pro Display";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+.about__owner-text {
+    & p {
+        color: var(--Text-Default, #202223);
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: "SF Pro Text";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+}
+
+.about__owner-main-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about__owner-main-text-item{
+    display: flex;
+    gap: 6px;
+    &::before {
+        content: '';
+        display: block;
+        border-radius: 4px;
+        background: #98C6CD;
+        flex: 0 0 2px;
+    }
+}
+
+
+.about__owner-main-text-item-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 auto;
+    & h3 {
+        color: var(--Text-Default, #202223);
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: "SF Pro Text";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+    }
+
+    & p {
+        color: var(--Text-Default, #202223);
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: "SF Pro Text";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+}
+
+.about__owner-img {
+    display: none;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+@media (min-width:992px) {
+
+    .about__owner {
+        padding: 0;
+    }
+
+    .about__owner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .about__owner-text-wrap{
+        flex: 0 1 600px;
+        gap: 24px;
+    }
+    
+    .about__owner-img {
+        display: block;
+        max-width: 462px;
+    }
+
+    .about__owner-title{
+        font-size: 28px;
+    }
+
+    .about__owner-text {
+        & p {
+            font-size: 16px;
+        }
+    }
+
+    .about__owner-main-text{
+        gap: 24px;
+    }
+
+    .about__owner-main-text-item-wrap{
+        & h3 {
+            font-size: 16px;
+        }
+
+        & p {
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.container {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+
+.button {
+    border-radius: 4px;
+    background: var(--Icon-Highlight, #00a0ac);
+    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+    padding: 8px 16px;
+    color: var(--Text-On-Primary, #fff);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "SF Pro Text";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+
+    &:hover {
+        border-radius: 4px;
+        background: var(--Text-Highlight, #347c84);
+        box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+    }
+}
+
+
+
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@import '_headerBottom.scss';
+@import '_headerUp.scss';
+@import '_mainFilter.scss';
+@import "_mainNav.scss";
+@import '_slider.scss';
+@import '_mainArticles.scss';
+@import '_mainLocation.scss';
+@import '_footer.scss';

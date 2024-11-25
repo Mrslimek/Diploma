@@ -1,0 +1,71 @@
+.brand {
+    margin-top: 8px;
+    padding: 24px 0;
+}
+
+.brand__title {
+    color: var(--Text-Default, #202223);
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "SF Pro Display";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.brand__list {
+    display: flex;
+    row-gap: 16px;
+    column-gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.brand__list-item {
+    flex: 1 1 auto;
+    max-width: 80px;
+
+    & a {
+        display: block;
+        padding: 8px;
+        border-radius: 4px;
+        background: #fff;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.brand__btn {
+    display: block;
+    margin: 0 auto;
+}
+
+
+@media (min-width:992px) {
+    .brand {
+        padding: 56px 0;
+        margin: initial;
+    }
+
+    .brand__list {
+        padding: 24px 0;
+        gap: 24px;
+
+    }
+
+    .brand__list-item{ 
+        max-width: 174px;
+        & a {
+            padding: 14px 20px;
+        }
+    }
+
+    .brand__title {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,28 @@
+.container {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+
+
+
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@import '_headerUp.scss';
+@import '_headerBottom.scss';
+@import '_mainFilter.scss';
+@import '_mainNav.scss';
+@import '_mainCatalog.scss';
+@import '_mainCatalogSelect.scss';
+@import '_mainCatalogFilter.scss';
+@import '_mainProducts.scss';
+@import '_slider.scss';
+@import "_mainArticles.scss";
+@import '_catalogItem.scss';
+@import '_footer.scss';

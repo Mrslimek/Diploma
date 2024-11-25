@@ -1,0 +1,20 @@
+.popular__goods {
+    padding: 32px 0;
+}
+
+.popular__goods-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 32px;
+}
+
+@media(min-width:992px) {
+    .popular__goods {
+        padding: 56px 0;
+    }
+
+    .popular__goods-wrap {
+        flex-direction: column;
+        gap: 61px;
+    }
+}

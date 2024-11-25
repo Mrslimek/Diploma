@@ -1,0 +1,38 @@
+.main__nav {
+    padding: 16px 0 0 0;
+}
+
+.main__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.main__nav-list-item {
+    & a {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+}
+
+.main__nav-list-item-active {
+    & a {
+        color: rgb(109, 113, 117);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+}
+
+.mian__nav-list-item-arrow{
+    max-height: 20px;
+}

@@ -1,0 +1,286 @@
+.buy__one-click {
+    padding: 16px 8px;
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    max-width: 611px;
+}
+
+.buy__one-click-title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Display;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.buy__one-click-list-item-img {
+    flex: 0 0 80px;
+    max-height: 80px;
+    max-width: 80px;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.buy__one-click-list-item-action{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.buy__one-click-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.buy__one-click-list-item-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.buy__one-click-list-item-title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 130%;
+}
+
+.buy__one-click-list-item-weight-list {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.buy__one-click-list-item-weight-list-item {
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: #fff;
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    background: rgb(228, 229, 231);
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(68, 157, 167);
+        color: #fff;
+    }
+}
+
+.buy__one-click-list-item-wrap-weight-title {
+    color: rgb(44, 110, 203);
+    font-family: SF Pro Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.buy__one-click-list-item-wrap-weight {
+    display: none;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+
+    & input {
+        flex: 1 1 auto;
+        border-radius: 5px;
+        border: 1px solid rgb(167, 172, 177);
+        padding: 8px 12px;
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+
+        &::placeholder {
+            color: rgb(32, 34, 35);
+            font-family: SF Pro Text;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0px;
+            text-align: left;
+        }
+    }
+
+    & button {
+        flex: 1 1 auto;
+        border-radius: 5px;
+        border: 1px solid rgb(167, 172, 177);
+        padding: 8px 16px;
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+}
+
+.buy__one-click-list-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    & p {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 130%;
+    }
+}
+
+.buy__one-click-list-item-quantity-wrap {
+    display: flex;
+    gap: 6px;
+
+    & button {
+        border-radius: 4px;
+        box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(168, 191, 195);
+        color: rgb(0, 128, 96);
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        width: 36px;
+        height: 36px;
+    }
+
+    & div {
+        border-radius: 4px;
+        box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(168, 191, 195);
+        color: black;
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.buy__one-click-list-item-line {
+    border: 1px solid rgb(140, 145, 150);
+    width: 100%;
+}
+
+.buy__one-click-list-item-text {
+    color: rgb(109, 113, 117);
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.buy__one-click-list-item-field-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.buy__one-click-list-item-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & input {
+        border-radius: 4px;
+        background: rgb(255, 255, 255);
+        padding: 8px 12px;
+        border: 1px solid rgb(167, 172, 177);
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+
+        &::placeholder {
+            color: rgb(32, 34, 35);
+            font-family: SF Pro Text;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+    }
+}
+
+.buy__one-click-list-item-field-title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 130%;
+}
+
+.buy__one-click-list-item-personal-data {
+    font-family: SF Pro Text;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    color: rgb(109, 113, 117);
+
+    & a {
+        color: rgb(44, 110, 203);
+    }
+}
+
+@media (min-width:992px) {
+    .buy__one-click {
+        padding: 24px;
+    }
+
+    .buy__one-click-title{
+        text-align: center;
+    }
+
+    .buy__one-click-list-item-wrap{
+        flex-direction: initial;
+    }
+
+    .buy__one-click-list-item-quantity{
+        flex-direction: column;
+    }
+
+    .buy__one-click-list-item{
+        align-items: center;
+    }
+
+    .buy__one-click-list-item-field-wrap{
+        max-width: 350px;
+    }
+
+    .buy__one-click-list-item-img{
+        flex: 0 0 56px;
+        max-height: 56px;
+    }
+}

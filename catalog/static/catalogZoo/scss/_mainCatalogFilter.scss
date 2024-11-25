@@ -1,0 +1,318 @@
+.catalog__filter {
+    margin-top: 14px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
+    background: rgb(255, 255, 255);
+    padding: 8px 12px;
+    border: 1px solid rgb(186, 191, 195);
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.catalog__filter-mob {
+    width: 100%;
+    padding: 56px 10px 24px 10px;
+    background: #fff;
+    height: 100svh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: 0.5s ease;
+    z-index: 1;
+}
+
+.catalog__filter-active {
+    left: 0;
+}
+
+.catalog__filter-text {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+.catalog__filter-img {
+    max-height: 20px;
+}
+
+.promotional__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid rgb(140, 145, 150);
+    padding-bottom: 18px;
+
+    & p {
+        color: rgb(26, 28, 29);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0px;
+    }
+    & input {
+        display: none;
+    }
+}
+
+.promotional__item-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+
+    & div {
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border: 2px solid rgb(140, 145, 150);
+        border-radius: 4px;
+        background: rgb(255, 255, 255);
+    }
+}
+
+.promotional__item-input-hide {
+    &:checked {
+        & ~ .promotional__item-label div {
+            background: url(../img/icons/arrow.svg) no-repeat center, rgb(0, 128, 96);
+            border: none;
+        }
+    }
+}
+
+.filter__type {
+    padding-top: 12.5px;
+}
+
+.filter__type-title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    margin-bottom: 8px;
+}
+
+.filter__type-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter__type-list-item {
+    & input {
+        display: none;
+    }
+}
+
+.filter__type-list-item-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    & p {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+    }
+
+    & div {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid rgb(140, 145, 150);
+        position: relative;
+
+        &::before {
+            content: "";
+            display: none;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgb(0, 128, 96);
+            top: 3px;
+            left: 3px;
+        }
+    }
+}
+
+.filter__type-list-item-hdie {
+    display: none;
+    &:checked {
+        & ~ .filter__type-list-item-label div {
+            border: 2px solid rgb(0, 128, 96);
+            &::before {
+                display: block;
+            }
+        }
+    }
+}
+
+.filter__brand {
+    margin-top: 12.5px;
+    padding-top: 12.5px;
+    border-top: 1px solid rgb(140, 145, 150);
+}
+
+.filter__brand-title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    margin-bottom: 8px;
+}
+
+.brand__search {
+    display: flex;
+    position: relative;
+    margin-bottom: 9px;
+
+    & input {
+        width: 100%;
+        border: 1px solid rgb(140, 145, 150);
+        border-radius: 4px;
+        padding: 8px 12px 8px 36px;
+        color: rgb(109, 113, 117);
+        font-family: SF Pro Text;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        &::placeholder {
+            color: rgb(109, 113, 117);
+            font-family: SF Pro Text;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0px;
+        }
+    }
+}
+
+.brand__search-img {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    max-height: 20px;
+}
+
+.brand__list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.brand__list-item {
+    & input {
+        display: none;
+    }
+}
+
+.brand__list-item-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    & p {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+    }
+
+    & div {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgb(140, 145, 150);
+        position: relative;
+        border-radius: 4px;
+    }
+}
+
+.brand__type-list-item-hdie {
+    display: none;
+
+    &:checked {
+        & ~ .brand__list-item-label div {
+            background: url(../img/icons/arrow.svg) no-repeat center, rgb(0, 128, 96);
+            border: none;
+        }
+    }
+}
+
+.filter__button {
+    margin-top: 25px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+    background: rgb(0, 160, 172);
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    width: 100%;
+
+    &:hover {
+        border-radius: 4px;
+        background: var(--Text-Highlight, #347c84);
+        box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+    }
+}
+
+@media (min-width: 992px) {
+    .catalog__filter {
+        display: none;
+    }
+
+    .catalog__filter-mob {
+        position: initial;
+        flex: 0 0 270px;
+        height: initial;
+        padding: 0;
+        background: none;
+    }
+
+    .promotional__item {
+        border: none;
+        padding: 18px 16px;
+        border-radius: 5px;
+        background: rgb(255, 255, 255);
+        margin-bottom: 24px;
+    }
+
+    .filter__type{
+        padding: 16px;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    .filter__brand{
+        border: none;
+        padding: 16px;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .filter__button {
+        display: none;
+    }
+}

@@ -1,0 +1,118 @@
+.catalog__sort-text {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+.catalog__sort-select {
+    display: flex;
+    position: relative;
+    padding: 8px 12px;
+    border: 1px solid rgb(186, 191, 195);
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
+    background: rgb(255, 255, 255);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.catalog__sort-select-active {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+.catalog__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.catalog__sort-select-arrow {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.catalog__sort-select-list {
+    position: absolute;
+    left: 0;
+    top: 43px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1), 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(255, 255, 255);
+    width: 100%;
+    padding: 8px;
+    transition: 0.5s ease;
+    transform: scaleY(0);
+    z-index: 2;
+}
+
+.catalog__sort-select-list-active {
+    transition: 0.5s ease;
+    display: block;
+    padding: 8px;
+    transform: scaleY(1);
+}
+
+.catalog__sort-select-list-item {
+    padding: 10px 8px;
+    transition: 0.5s ease;
+
+    & p {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Text;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    &:hover {
+        border-radius: 4px;
+        background: rgb(246, 246, 247);
+    }
+}
+
+.catalog__sort-select-list-item-active {
+    border-radius: 4px;
+    background: rgb(242, 247, 254);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -7px;
+        height: 100%;
+        width: 3px;
+        border-radius: 0px 4px 4px 0px;
+        background: rgb(44, 110, 203);
+    }
+}
+
+@media (min-width: 992px) {
+    .catalog__sort {
+        flex-direction: initial;
+        align-items: center;
+        gap: 9px;
+        flex: 0 1 396px;
+    }
+
+    .catalog__sort-select {
+        flex: 0 0 270px;
+    }
+}

@@ -1,0 +1,31 @@
+.container {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+
+
+
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@import '_headerBottom.scss';
+@import '_headerUp.scss';
+@import '_mainFilter.scss';
+@import '_mainAbout.scss';
+@import '_slider.scss';
+@import '_mainPopularGoods.scss';
+@import '_mainPopularGoodsPromotion.scss';
+@import '_mainNewProduct.scss';
+@import '_mainBrand.scss';
+@import '_mainFeedback.scss';
+@import '_mainArticles.scss';
+@import '_mainAboutOwner.scss';
+@import '_mainLocation.scss';
+@import '_modals.scss';
+@import '_footer.scss';

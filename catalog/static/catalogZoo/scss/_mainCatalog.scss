@@ -1,0 +1,32 @@
+.catalog__title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.catalog__title {
+    color: rgb(32, 34, 35);
+    font-family: SF Pro Display;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+@media (min-width: 992px) {
+    .catalog__title-wrap {
+        flex-direction: initial;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+
+    .catalog__title {
+        color: rgb(32, 34, 35);
+        font-family: SF Pro Display;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 44px;
+        letter-spacing: 0px;
+    }
+}
