@@ -12,7 +12,7 @@
   color: var(--Text-On-Primary, #fff);
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -53,7 +53,7 @@
 .header__logo-text {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -86,7 +86,7 @@
 .header__bottom-basket-value {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -153,7 +153,7 @@
 .header__bottom-nav-item a {
   color: var(--Text-On-Interactive, #fff);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -224,7 +224,7 @@
     width: 100%;
     color: var(--Text-Subdued, #6d7175);
     font-feature-settings: "clig" off, "liga" off;
-    font-family: "SF Pro Text";
+    font-family: "SF Pro Text", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -233,7 +233,7 @@
   .header__bottom-search input::-moz-placeholder {
     color: var(--Text-Subdued, #6d7175);
     font-feature-settings: "clig" off, "liga" off;
-    font-family: "SF Pro Text";
+    font-family: "SF Pro Text", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -242,7 +242,7 @@
   .header__bottom-search input::placeholder {
     color: var(--Text-Subdued, #6d7175);
     font-feature-settings: "clig" off, "liga" off;
-    font-family: "SF Pro Text";
+    font-family: "SF Pro Text", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -266,7 +266,7 @@
   .header__bottom-basket p {
     color: var(--Text-Default, #202223);
     font-feature-settings: "clig" off, "liga" off;
-    font-family: "SF Pro Text";
+    font-family: "SF Pro Text", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
@@ -309,7 +309,7 @@
   background: var(--Surface-Default, #fff);
   color: var(--Text-Subdued, #6d7175);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -318,7 +318,7 @@
 .header__up-search input::-moz-placeholder {
   color: var(--Text-Subdued, #6d7175);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -327,7 +327,7 @@
 .header__up-search input::placeholder {
   color: var(--Text-Subdued, #6d7175);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -352,7 +352,7 @@
 .header__up-list-item a {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Display";
+  font-family: "SF Pro Display", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -373,7 +373,7 @@
 .header__up-basket p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -397,7 +397,7 @@
 .header__up-adress-street p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -412,7 +412,7 @@
 .header__up-adress-metro p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -439,7 +439,7 @@
 .header__up-number-wrap a {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -456,7 +456,7 @@
 .header__up-schedule p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -466,7 +466,7 @@
 .header__up-button {
   color: var(--Interactive-Default, #2c6ecb);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -516,7 +516,7 @@
 
 .main__nav-list-item a {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -526,7 +526,7 @@
 
 .main__nav-list-item-active a {
   color: rgb(109, 113, 117);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -546,7 +546,7 @@
 
 .description__title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
@@ -556,7 +556,7 @@
 
 .description__text {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -565,7 +565,7 @@
 
 .description__features-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -586,7 +586,7 @@
 
 .description__features-list-item {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -614,7 +614,7 @@
 
 .description__composition-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -629,7 +629,7 @@
 
 .description__composition-list-item {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -683,7 +683,7 @@
 
 .about__product-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
@@ -692,7 +692,7 @@
 
 .about__product-link {
   color: rgb(44, 110, 203);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -749,7 +749,7 @@
 
 .about__product-weight-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
@@ -784,7 +784,7 @@
 
 .about__product-item-weight {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 120%;
@@ -793,7 +793,7 @@
 
 .about__product-item-price {
   color: rgb(109, 113, 117);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 110%;
@@ -815,7 +815,7 @@
 }
 .about__product-your-weight p {
   color: rgb(44, 110, 203);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 17px;
   font-weight: 600;
   line-height: 24px;
@@ -839,7 +839,7 @@
   background: rgb(255, 255, 255);
   border: 1px solid rgb(167, 172, 177);
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
@@ -847,7 +847,7 @@
 }
 .about__product-your-weight input::-moz-placeholder {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
@@ -855,7 +855,7 @@
 }
 .about__product-your-weight input::placeholder {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
@@ -864,7 +864,7 @@
 .about__product-your-weight button {
   padding: 8px 16px;
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -876,7 +876,7 @@
 
 .about__product-your-weight-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 17px;
   font-weight: 600;
   line-height: 24px;
@@ -897,7 +897,7 @@
 
 .about__product-pickup-title {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 130%;
@@ -912,7 +912,7 @@
 
 .about__product-pickup-text {
   color: rgb(92, 92, 92);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 130%;
@@ -925,7 +925,7 @@
 }
 .about__product-pickup-adress-wrap p {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -966,7 +966,7 @@
 
 .about__product-price {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Display;
+  font-family: SF Pro Display, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
@@ -975,7 +975,7 @@
 
 .about__product-price-weight {
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -994,7 +994,7 @@
   background: rgb(255, 255, 255);
   border: 1px solid rgb(167, 172, 177);
   color: rgb(32, 34, 35);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
@@ -1014,7 +1014,7 @@
   background: rgb(255, 255, 255);
   border: 1px solid rgb(167, 172, 177);
   color: rgb(0, 128, 96);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
@@ -1027,7 +1027,7 @@
   border-radius: 4px;
   box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
   color: rgb(255, 255, 255);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -1044,7 +1044,7 @@
 
 .about__product-buy {
   color: rgb(44, 110, 203);
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -1123,7 +1123,7 @@
 .articles__title {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Display";
+  font-family: "SF Pro Display", sans-serif;
   font-size: 21px;
   font-style: normal;
   font-weight: 700;
@@ -1162,7 +1162,7 @@
 .articles__slider-item-text-wrap h3 {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -1175,7 +1175,7 @@
 .articles__slider-item-text-wrap p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1194,7 +1194,7 @@
 .articles__slider-item-time-wrap p {
   color: var(--Text-Disabled, #8c9196);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -1286,7 +1286,7 @@
 .slider__title {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Display";
+  font-family: "SF Pro Display", sans-serif;
   font-size: 21px;
   font-style: normal;
   font-weight: 700;
@@ -1337,7 +1337,7 @@
 .slider__item-title {
   color: #000;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 600;
@@ -1350,7 +1350,7 @@
 .slider__item-title:hover {
   color: var(--Icon-Highlight, #00a0ac);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
@@ -1370,7 +1370,7 @@
   cursor: pointer;
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -1390,7 +1390,7 @@
 .slider__item-price {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -1412,7 +1412,7 @@
 .slider__item-basket-text {
   color: #5c5f62;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -1426,7 +1426,7 @@
   color: var(--Text-Default, #202223);
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -1438,7 +1438,7 @@
   color: #fff;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -1522,7 +1522,7 @@ footer {
 .footer__logo-text {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -1542,7 +1542,7 @@ footer {
 .footer__list-item a {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -1581,7 +1581,7 @@ footer {
 .footer__bottom-number-wrap a {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -1597,7 +1597,7 @@ footer {
 .footer__bottom-schedule p {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1608,7 +1608,7 @@ footer {
   background: none;
   color: var(--Interactive-Default, #2c6ecb);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -1627,7 +1627,7 @@ footer {
 .footer__design-about {
   color: var(--Text-Disabled, #8c9196);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1636,7 +1636,7 @@ footer {
 .footer__design-about span {
   color: var(--Interactive-Default, #2C6ECB);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1646,7 +1646,7 @@ footer {
 .footer__rights {
   color: var(--Text-Disabled, #8c9196);
   font-feature-settings: "clig" off, "liga" off;
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
