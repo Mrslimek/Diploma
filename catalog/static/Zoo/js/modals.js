@@ -1,4 +1,5 @@
 const callback = document.querySelector('.header__up-button')
+const callbackFooter = document.querySelector('.footer__bottom-button')
 const modal = document.querySelector('.modal__wrap')
 const callbackForm = document.querySelector('.callback')
 const callbackBtn = document.querySelector('.callback > button');
@@ -25,6 +26,12 @@ modal.addEventListener('click', (e) => {
 })
 
 callback.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden'
+    modal.classList.add('modal__active')
+    callbackForm.classList.add('modal__active')
+})
+
+callbackFooter.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'
     modal.classList.add('modal__active')
     callbackForm.classList.add('modal__active')

@@ -1,33 +1,33 @@
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/catalogZoo/fonts/SF-Pro-Text/SFProText-Bold.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Bold.ttf);
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/catalogZoo/fonts/SF-Pro-Text/SFProText-Semibold.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Semibold.ttf);
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Display";
-    src: url(../static/catalogZoo/fonts/SF-Pro-Display/SF-Pro-Display-Semibold.otf);
+    src: url(../fonts/SF-Pro-Display/SF-Pro-Display-Semibold.otf);
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: "SF Pro Display";
-    src: url(../static/catalogZoo/fonts/SF-Pro-Display/SF-Pro-Display-Bold.otf);
+    src: url(../fonts/SF-Pro-Display/SF-Pro-Display-Bold.otf);
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/catalogZoo/fonts/SF-Pro-Text/SFProText-Medium.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Medium.ttf);
     font-weight: 500;
     font-style: normal;
 }

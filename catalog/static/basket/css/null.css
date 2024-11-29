@@ -1,39 +1,39 @@
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/basket/fonts/SF-Pro-Text/SFProText-Bold.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Bold.ttf);
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/basket/fonts/SF-Pro-Text/SFProText-Semibold.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Semibold.ttf);
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Display";
-    src: url(../static/basket/fonts/SF-Pro-Display/SF-Pro-Display-Semibold.otf);
+    src: url(../fonts/SF-Pro-Display/SF-Pro-Display-Semibold.otf);
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: "SF Pro Display";
-    src: url(../static/basket/fonts/SF-Pro-Display/SF-Pro-Display-Bold.otf);
+    src: url(../fonts/SF-Pro-Display/SF-Pro-Display-Bold.otf);
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "SF Pro Text";
-    src: url(../static/basket/fonts/SF-Pro-Text/SFProText-Medium.ttf);
+    src: url(../fonts/SF-Pro-Text/SFProText-Medium.ttf);
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: "Inter";
-    src: url(../static/basket/fonts/Inter/Inter-Regular.ttf);
+    src: url(../fonts/Inter/Inter-Regular.ttf);
     font-weight: 400;
     font-style: normal;
 }

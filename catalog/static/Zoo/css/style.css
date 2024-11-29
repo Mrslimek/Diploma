@@ -2323,4 +2323,70 @@ footer {
     justify-content: space-between;
     padding: 0;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+.register-form, .login-form, .reset-form{
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  gap: 12px;
+  background-color: white;
+  color: #000;
+  border: 1px solid #000;
+  font-family: "SF Pro Display", sans-serif;
+  border-radius: 10px;
+  margin: 80px 340px;
+  padding: 40px;
+}
+
+.register-form-title, .login-form-title, .reset-form-title{
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form-buttons, .login-form-buttons, .reset-form-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.register-form-buttons a, .login-form-buttons a, .reset-form-buttons a{
+  color: rgb(12, 37, 99); 
+}
+
+.register-form-buttons button, .login-form-buttons button, .reset-form-buttons button{
+  background-color: rgb(0, 160, 172);
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: white;
+  font-family: 'SF Pro Text', sans-serif;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+}
+
+.register-form-buttons button:hover, .login-form-buttons button:hover, .reset-form-buttons button:hover{
+  background-color: rgb(52, 124, 132);
+}
+
+.register-form-field, .login-form-field, .reset-form-field{
+  width: 100%;
+  border-radius: 4px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(167, 172, 177);
+  color: rgb(32, 34, 35);
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 7px 0;
+  padding-left: 14px;
+  padding-right: 200px;
+}
+
+/*# sourceMappingURL=style.css.map */
