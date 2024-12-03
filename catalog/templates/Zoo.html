@@ -504,11 +504,11 @@
                     <section class="filter">
                         <div class="container">
                             <div class="filter__wrap">
-                                {% for item in product_category %}
+                                {% for category in categories %}
                                     <a href="../catalog/<int:id>" class="filter__item">
-                                        <div class="filter__item-img" style="background-image: url(../static/Zoo/img/dog.png);">
+                                        <div class="filter__item-img" style="background-image: url('/media/{{category.image}}');">
                                         </div>
-                                        <h3 class="filter__item-text">Собаки</h3>
+                                        <h3 class="filter__item-text">{{ category.name }}</h3>
                                     </a>
                                 {% endfor %}
                             </div>

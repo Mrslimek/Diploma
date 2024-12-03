@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Brand(models.Model):
     name = models.CharField(max_length=255, unique=True, verbose_name='Название продукта')
+    image = models.FileField(verbose_name='Картинка бренда')
 
     def __str__(self):
         return self.name
@@ -15,6 +16,7 @@ class Brand(models.Model):
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=255, unique=True, verbose_name='Категория продукта')
+    image = models.FileField(verbose_name='Картинка категории')
 
     def __str__(self):
         return self.name

@@ -3,11 +3,19 @@ from django.views.generic import CreateView
 from .forms import RegisterForm, LoginForm, ResetForm
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from .models import *
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'Zoo.html')
+
+    product_categories = ProductCategory.objects.exclude(name='Универсальный')
+
+    context = {
+        'categories': product_categories,
+    }
+
+    return render(request, 'Zoo.html', context=context)
 
 def catalog(request):
     return render(request, 'catalogZoo.html')
