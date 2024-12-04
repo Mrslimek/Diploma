@@ -388,60 +388,11 @@
                                 Все бренды
                             </h1>
                             <ul class="brands__list">
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandOne.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandTwo.png" alt="">
-                                </li>
-                                <li class="brands__list-item">
-                                    <img src="../static/brands/img/brandThree.png" alt="">
-                                </li>
+                                {% for brand in brands %}
+                                    <li class="brands__list-item">
+                                        <img style="object-fit: contain;" src="/media/{{brand.image}}" alt="{{brand.name}}">
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

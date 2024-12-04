@@ -1,12 +1,16 @@
 from django.contrib import admin
 from django.urls import include, path
-from .views import home, catalog, card_product, brands, basket, articles, RegisterView, login, reset_password
+from .views import (
+    home, catalog, card_product, brands,
+    basket, articles, RegisterView, login,
+    reset_password, catalog_filter_by_id)
 
 
 
 urlpatterns = [
     path('', home),
     path('catalog/', catalog),
+    path('catalog/<int:product_category_id>', catalog_filter_by_id, name='filtered_products'),
     path('card_product/', card_product),
     path('brands/', brands),
     path('basket/', basket),

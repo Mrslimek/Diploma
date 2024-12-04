@@ -505,7 +505,7 @@
                         <div class="container">
                             <div class="filter__wrap">
                                 {% for category in categories %}
-                                    <a href="../catalog/<int:id>" class="filter__item">
+                                    <a href="{% url 'filtered_products' category.id %}" class="filter__item">
                                         <div class="filter__item-img" style="background-image: url('/media/{{category.image}}');">
                                         </div>
                                         <h3 class="filter__item-text">{{ category.name }}</h3>
@@ -625,151 +625,6 @@
                                             </div>
                                             <button type="button" class="slider__item-btn">Купить в 1 клик</button>
                                         </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgTwo.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                FRESH STEP CAT LITTER CLAY EXTREME – Фреш Степ наполнитель..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">6 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">12 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">18 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">30 <span>л.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgThree.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                FURMINATOR SHORT HAIR LARGE CAT M/L Фурминатор для короткошерстных кошек..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">1 <span>шт</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgFour.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Сухой корм ROYAL CANIN STERILISED 37 для взрослых кастрированных котов и..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">0,2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">0,4 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">1,2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">4 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">10 <span>кг.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 5 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">20 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">445 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">1000 <span>кг.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
                                     </div>
                                     <button onclick="window.location.href='./catalog/';" class="popular__goods-btn button slider__button">
                                         Смотреть больше товаров
@@ -820,185 +675,48 @@
                                         </div>
                                     </div>
                                     <div class="new__product-slider slider">
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">85 <span>г.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
+                                        {% for product in products %}
+                                            <article class="slider__item">
+                                                <div class="slider__item-img">
+                                                    <img style="object-fit: contain;" src="/media/{{product.productimage_set.first.image}}" alt="item" />
+                                                </div>
+                                                <a href="#" class="slider__item-title">
+                                                    {{product.title}}
+                                                </a>
+                                                <ul class="slider__item-weight-list">
+                                                    {% if product.productproperties_set.exists %}
+                                                        {% for property in product.productproperties_set.all %}
+                                                            <li class="slider__item-weight-list-item">{{property.weight}} <span>{{product.unit}}</span></li>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <li class="slider__item-weight-list-item">{{product.amount}} <span>{{product.unit}}</span></li>
+                                                    {% endif %}
+                                                </ul>
+                                                <div class="slider__item-price-basket">
+                                                    <p class="slider__item-price">{{product.price}} BYN</p>
+                                                    <div class="slider__item-basket">
+                                                        <div class="slider__item-basket-text">+</div>
+                                                        <div class="slider__item-basket-img">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                                viewBox="0 0 20 20"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
+                                                                    fill="#5C5F62"
+                                                                />
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgTwo.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                FRESH STEP CAT LITTER CLAY EXTREME – Фреш Степ наполнитель..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">6 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">12 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">18 <span>л.</span></li>
-                                                <li class="slider__item-weight-list-item">30 <span>л.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgThree.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                FURMINATOR SHORT HAIR LARGE CAT M/L Фурминатор для короткошерстных кошек..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">1 <span>шт</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImgFour.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Сухой корм ROYAL CANIN STERILISED 37 для взрослых кастрированных котов и..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">0,2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">0,4 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">1,2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">2 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">4 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">10 <span>кг.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 5 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">20 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">445 <span>кг.</span></li>
-                                                <li class="slider__item-weight-list-item">1000 <span>кг.</span></li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
+                                                <button type="button" class="slider__item-btn">Купить в 1 клик</button>
+                                            </article>
+                                        {% endfor %}
                                     </div>
                                     <button onclick="window.location.href='./catalog/';" class="popular__goods-btn button slider__button">
                                         Смотреть больше товаров
@@ -1012,51 +730,13 @@
                             <div class="brand__wrapper">
                                 <h2 class="brand__title">Популярные бренды</h2>
                                 <ul class="brand__list">
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandOne.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandTwo.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandThree.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandOne.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandTwo.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandThree.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandOne.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandTwo.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="brand__list-item">
-                                        <a href="#">
-                                            <img src="../static/Zoo/img/brandThree.png" alt="" />
-                                        </a>
-                                    </li>
+                                    {% for brand in brands %}
+                                        <li class="brand__list-item">
+                                            <a href="#">
+                                                <img style="object-fit: contain;" src="../media/{{brand.image}}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                                 <button onclick="window.location.href='./brands/';" class="brand__btn button">Смотреть больше брендов</button>
                             </div>

@@ -37,9 +37,11 @@ class Product(models.Model):
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True, verbose_name='Название')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    amount = models.IntegerField(verbose_name='Кол-во продукта')
     unit = models.CharField(max_length=255, choices=UNIT_CHOICES, verbose_name='Единица измерения')
     product_type = models.CharField(max_length=255, choices=PRODUCT_TYPE_CHOICES, verbose_name='Тип продукта')
     product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
+    date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
 
 
     def __str__(self):

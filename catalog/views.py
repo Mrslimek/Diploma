@@ -10,21 +10,54 @@ from .models import *
 def home(request):
 
     product_categories = ProductCategory.objects.exclude(name='Универсальный')
+    products = Product.objects.all().order_by('-date_added')
+    brands = Brand.objects.all()[:12]
 
     context = {
         'categories': product_categories,
+        'products': products,
+        'brands': brands
     }
 
     return render(request, 'Zoo.html', context=context)
 
+def catalog_filter_by_id(request, product_category_id):
+    
+    products = Product.objects.filter(product_category_id=product_category_id)
+    choices = [choice[0] for choice in Product.PRODUCT_TYPE_CHOICES]
+    brands = Brand.objects.all()
+
+
+    context = {
+        'products': products,
+        'choices': choices,
+        'brands': brands,
+    }
+
+    return render(request, 'catalogZooFiltered.html', context)
+
 def catalog(request):
-    return render(request, 'catalogZoo.html')
+
+    products = Product.objects.all()
+
+    context = {
+        'products': products
+    }
+
+    return render(request, 'catalogZoo.html', context)
 
 def card_product(request):
     return render(request, 'cardProduct.html')
 
 def brands(request):
-    return render(request, 'brands.html')
+
+    brands = Brand.objects.all()
+
+    context = {
+        'brands': brands
+    }
+
+    return render(request, 'brands.html', context)
 
 def basket(request):
     return render(request, 'basket.html')
