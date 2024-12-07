@@ -11,7 +11,7 @@ urlpatterns = [
     path('', home),
     path('catalog/', catalog),
     path('catalog/<int:product_category_id>', catalog_filter_by_id, name='filtered_products'),
-    path('card_product/', card_product),
+    path('details/<int:id>', card_product, name='card_product'),
     path('brands/', brands),
     path('basket/', basket),
     path('articles/', articles),

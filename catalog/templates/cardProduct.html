@@ -407,30 +407,23 @@
                         <div class="container">
                             <div class="about__product-title-wrap">
                                 <h1 class="about__product-title">
-                                    Сухой корм ROYAL CANIN STERILISED 37 для взрослых кастрированных котов и стерилизованных кошек
+                                    {{product.title}}
                                 </h1>
                                 <a href="#" class="about__product-link">
-                                    Смотреть все товары бренда ROYAL CANIN 
+                                    Смотреть все товары бренда {{product.brand}} 
                                 </a>
                             </div>
                             <div class="about__product-wrap">
                                 <div class="about__product-img-wrap">
                                     <div class="about__product-img">
-                                        <img src="../static/cardProduct/img/aboutProductMain.png" alt="product">
+                                        <img style="object-fit: contain;" src="/media/{{ product.productimage_set.first.image }}" alt="product"> 
                                     </div>
                                     <ul class="about__product-img-list">
-                                        <li class="about__product-img-list-item about__product-img-list-item-active">
-                                            <img src="../static/cardProduct/img/articlesImg.png" alt="product">
-                                        </li>
-                                        <li class="about__product-img-list-item">
-                                            <img src="../static/cardProduct/img/sliderImg.png" alt="product">
-                                        </li>
-                                        <li class="about__product-img-list-item">
-                                            <img src="../static/cardProduct/img/aboutProductMain.png" alt="product">
-                                        </li>
-                                        <li class="about__product-img-list-item">
-                                            <img src="../static/cardProduct/img/sliderImg.png" alt="product">
-                                        </li>
+                                        {% for image in product.productimage_set.all %}
+                                            <li class="about__product-img-list-item">
+                                                <img style="object-fit: contain;" src="/media/{{ image.image }}" alt="product">
+                                            </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="about__product-second">
@@ -440,30 +433,27 @@
                                                 Варианты фасовки. Выберите удобный вес 
                                             </h3>
                                             <ul class="about__product-weight-list">
-                                                <li class="about__product-weight-list-item about__product-weight-list-item-active">
-                                                    <p class="about__product-item-weight">
-                                                        0,8 кг
-                                                    </p>
-                                                    <p class="about__product-item-price">
-                                                        14,6 BYN 
-                                                    </p>
-                                                </li>
-                                                <li class="about__product-weight-list-item">
-                                                    <p class="about__product-item-weight">
-                                                        0,4 кг
-                                                    </p>
-                                                    <p class="about__product-item-price">
-                                                        12,6 BYN 
-                                                    </p>
-                                                </li>
-                                                <li class="about__product-weight-list-item">
-                                                    <p class="about__product-item-weight">
-                                                        0,2 кг
-                                                    </p>
-                                                    <p class="about__product-item-price">
-                                                        5,6 BYN 
-                                                    </p>
-                                                </li>
+                                                {% if product.productproperties_set.exists %}
+                                                    {% for property in product.productproperties_set.all %}
+                                                        <li class="about__product-weight-list-item about__product-weight-list-item-active">
+                                                            <p class="about__product-item-weight">
+                                                                {{property.weight}} {{product.unit}}
+                                                            </p>
+                                                            <p class="about__product-item-price">
+                                                                {{property.price}} 
+                                                            </p>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <li class="about__product-weight-list-item about__product-weight-list-item-active">
+                                                        <p class="about__product-item-weight">
+                                                            {{product.amount}} {{product.unit}}
+                                                        </p>
+                                                        <p class="about__product-item-price">
+                                                            {{product.price}} BYN 
+                                                        </p>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                         </div>
                                     </div>
@@ -559,10 +549,10 @@
                                     </div>
                                     <div class="about__product-price-wrap">
                                         <p class="about__product-price">
-                                            234 BYN
+                                            {{product.price}} BYN
                                         </p>
                                         <p class="about__product-price-weight">
-                                            Общий вес: 0,542 кг
+                                            Общий вес: {{product.amount}} {{product.unit}}
                                         </p>
                                     </div>
                                     <div class="about__product-action-wrap">
@@ -594,89 +584,69 @@
                                 Описание
                             </h2>
                             <div class="description__wrap">
-                                <div class="description__features-composition-wrap description__first">
-                                    <p class="description__text">
-                                        Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.
-                                    </p> 
-                                    <div class="description__features">
-                                        <h3 class="description__features-title">
-                                            Ключевые особенности:
-                                        </h3>
-                                        <ul class="description__features-list">
-                                            <li class="description__features-list-item">
-                                                Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности. STERILISED 37 помогает снизить риск появления избыточного веса благодаря умеренному содержанию жиров, при соблюдении рекомендуемых норм кормления.
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Поддержание здоровья мочевыделительной системы. Помогает поддерживать здоровье мочевыделительной системы благодаря балансу минеральных веществ.
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Поддержание мышечной массы благодаря высокому содержанию белков. Способствует поддержанию мышечной массы благодаря высокому уровню белков.
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Обогащен L-карнитином. L-карнитин необходим для нормального обмена жиров.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="description__text">
-                                        FELINE HEALTH NUTRITION – гамма продуктов повседневного питания для здоровых кошек, учитывающая их потребности обусловленные возрастом, образом жизни и другими индивидуальными особенностями.
-                                    </p>
-                                    <div class="description__composition">
-                                        <h3 class="description__composition-title">
-                                            Состав:
-                                        </h3>
-                                        <ul class="description__composition-list">
-                                            <li class="description__composition-list-item">
-                                                Дегидратированные белки животного происхождения (птица), изолят растительных белков*, пшеница, мука из зерновых культур, растительная клетчатка, животные жиры, гидролизат белков животного происхождения (вкусоароматические добавки), рис, минеральные вещества, рыбий жир, дрожжи и побочные продукты брожения, соевое масло, фруктоолигосахариды, хлорид аммония.
-                                            </li>
-                                            <li class="description__composition-list-item">
-                                                *L.I.P.: белки, отобранные по принципу максимальной усвояемости.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="description__features-composition-wrap description__second">
-                                    <div class="description__features">
-                                        <h3 class="description__features-title">
-                                            Гарантированный анализ:
-                                        </h3>
-                                        <ul class="description__features-list">
-                                            <li class="description__features-list-item">
-                                                Белки – 37 %
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Жиры – 12 %
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Клетчатка – 6,2 %
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Минеральные вещества – 8,2 %
-                                            </li>
-                                            <li class="description__features-list-item">
-                                                Безазотистые экстрактивные вещества – 31,1 %
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="description__composition">
-                                        <h3 class="description__composition-title">
-                                            Пищевые добавки:
-                                        </h3>
-                                        <ul class="description__composition-list">
-                                            <li class="description__composition-list-item">
-                                                Витамин A – 19 000 ME, витамин D3 – 1 000 ME, железо - 34 мг, йод – 3,4 мг, марганец - 44 мг, цинк – 131 мг, селен – 0,05 мг.
-                                            </li>
-                                            <li class="description__composition-list-item">
-                                                Технологические добавки: клиноптилолит осадочного происхождения – 10 гр, консерванты – антиокислители.
-                                            </li>
-                                            <li class="description__composition-list-item">
-                                                Рекомендации по кормлению: см. упаковку.
-                                            </li>
-                                            <li class="description__composition-list-item">
-                                                Следите, чтобы у Вашего питомца всегда был доступ к чистой свежей воде.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                {% if product.productdescription_set.exists %}
+                                    {% for desc in product.productdescription_set.all %}
+                                        <div class="description__features-composition-wrap description__first">
+                                            {% if desc.description %}
+                                                <p class="description__text">
+                                                    {{desc.description}}
+                                                </p>
+                                            {% endif %}
+                                            <div class="description__features">
+                                                {% if desc.key_features %}
+                                                    <h3 class="description__features-title">
+                                                        Ключевые особенности:
+                                                    </h3>
+                                                    <div class="description__features-list">
+                                                        <p class="description__features-list-item">
+                                                            {{desc.key_features}}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="description__composition">
+                                                {% if desc.ingridients %}
+                                                    <h3 class="description__composition-title">
+                                                        Состав:
+                                                    </h3>
+                                                    <div class="description__composition-list">
+                                                        <p class="description__composition-list-item">
+                                                            {{desc.ingridients}}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="description__features-composition-wrap description__second">
+                                            <div class="description__features">
+                                                {% if desc.guaranteed_analysis %}
+                                                    <h3 class="description__features-title">
+                                                        Гарантированный анализ:
+                                                    </h3>
+                                                    <div class="description__features-list">
+                                                        <p class="description__features-list-item">
+                                                            {{desc.guaranteed_analysis}}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="description__composition">
+                                                {% if desc.food_additives %}
+                                                    <h3 class="description__composition-title">
+                                                        Пищевые добавки:
+                                                    </h3>
+                                                    <div class="description__composition-list">
+                                                        <p class="description__composition-list-item">
+                                                            {{desc.food_additives}}
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>Описание отсутствует</p>
+                                {% endif %}
                             </div>
                         </div>
                     </section>
@@ -722,183 +692,48 @@
                                         </div>
                                     </div>
                                     <div class="popular__goods-slider slider">
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
+                                        {% for p in products_by_popularity %}
+                                            <article class="slider__item">
+                                                <div class="slider__item-img">
+                                                    <img style="object-fit: contain;" src="/media/{{p.productimage_set.first.image}}" alt="item" />
+                                                </div>
+                                                <a href="#" class="slider__item-title">
+                                                    {{p.title}}
+                                                </a>
+                                                <ul class="slider__item-weight-list">
+                                                    {% if p.productproperties_set.exists %}
+                                                        {% for property in p.productproperties_set.all %}
+                                                            <li class="slider__item-weight-list-item">{{property.weight}} {{p.unit}}</li>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <li class="slider__item-weight-list-item">{{product.amount}} {{p.unit}}</li>
+                                                    {% endif %}
+                                                </ul>
+                                                <div class="slider__item-price-basket">
+                                                    <p class="slider__item-price">{{p.price}} BYN</p>
+                                                    <div class="slider__item-basket">
+                                                        <div class="slider__item-basket-text">+</div>
+                                                        <div class="slider__item-basket-img">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                                viewBox="0 0 20 20"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
+                                                                    fill="#5C5F62"
+                                                                />
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 2 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 3 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 4 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 5 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
+                                                <button type="button" class="slider__item-btn">Купить в 1 клик</button>
+                                            </article>
+                                        {% endfor %}
                                     </div>
                                     <button onclick="window.location.href='../catalog/';" class="popular__goods-btn button slider__button">
                                         Смотреть больше товаров
@@ -951,183 +786,48 @@
                                         </div>
                                     </div>
                                     <div class="new__product-slider slider">
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
+                                        {% for p in products_by_type %}
+                                            <article class="slider__item">
+                                                <div class="slider__item-img">
+                                                    <img style="object-fit: contain;" src="/media/{{p.productimage_set.first.image}}" alt="item" />
+                                                </div>
+                                                <a href="#" class="slider__item-title">
+                                                    {{p.title}}
+                                                </a>
+                                                <ul class="slider__item-weight-list">
+                                                    {% if p.productproperties_set.exists %}
+                                                        {% for property in p.productproperties_set.all %}
+                                                            <li class="slider__item-weight-list-item">{{property.weight}} {{p.unit}}</li>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <li class="slider__item-weight-list-item">{{product.amount}} {{p.unit}}</li>
+                                                    {% endif %}
+                                                </ul>
+                                                <div class="slider__item-price-basket">
+                                                    <p class="slider__item-price">12 BYN</p>
+                                                    <div class="slider__item-basket">
+                                                        <div class="slider__item-basket-text">+</div>
+                                                        <div class="slider__item-basket-img">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                                viewBox="0 0 20 20"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
+                                                                    fill="#5C5F62"
+                                                                />
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 2 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 3 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 4 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/cardProduct/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 5 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
+                                                <button type="button" class="slider__item-btn">Купить в 1 клик</button>
+                                            </article>
+                                       {% endfor %}
                                     </div>
                                     <button onclick="window.location.href='../catalog/';" class="popular__goods-btn button slider__button">
                                         Смотреть больше товаров

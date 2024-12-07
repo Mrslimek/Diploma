@@ -42,13 +42,13 @@ class Product(models.Model):
     product_type = models.CharField(max_length=255, choices=PRODUCT_TYPE_CHOICES, verbose_name='Тип продукта')
     product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
     date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
+    popularity = models.IntegerField(verbose_name='Популярность продукта', default=0)
 
     def price_with_discount(self):
         promotions = self.promotion_set.all()
         if promotions.exists():
             discount = promotions.first().discount
             final_price = round(self.price - (self.price * discount / 100), 2)
-            print(final_price)
             return final_price
 
         return self.price
@@ -93,9 +93,10 @@ class ProductImage(models.Model):
 class ProductProperties(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
     weight = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Вес')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена', default=0.00)
 
     def __str__(self):
-        return f'{self.product} --- {self.weight}'
+        return f'{self.product} --- {self.weight} --- {self.price}'
 
     class Meta:
         verbose_name = 'Расфасовка продукта'

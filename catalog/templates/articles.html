@@ -384,21 +384,13 @@
                 <section class="filter">
                     <div class="container">
                         <div class="filter__wrap">
-                            <a href="#" class="filter__item filter__item-active">
-                                <div class="filter__item-img" style="background-image: url(../static/articles/img/dog.png);">
+                            {% for category in categories %} 
+                            <a href="{% url 'filtered_products' category.id %}" class="filter__item">
+                                <div class="filter__item-img" style="background-image: url(/media/{{category.image}});">
                                 </div>
-                                <h3 class="filter__item-text">Собаки</h3>
+                                <h3 class="filter__item-text">{{category.name}}</h3>
                             </a>
-                            <a href="#" class="filter__item">
-                                <div class="filter__item-img" style="background-image: url(../static/articles/img/cat.png);">
-                                </div>
-                                <h3 class="filter__item-text">Кошки</h3>
-                            </a>
-                            <a href="#" class="filter__item">
-                                <div class="filter__item-img" style="background-image: url(../static/articles/img/mouse.png);">
-                                </div>
-                                <h3 class="filter__item-text">Грызуны</h3>
-                            </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>

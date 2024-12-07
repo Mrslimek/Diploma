@@ -591,18 +591,25 @@
                                         </div>
                                     </div>
                                     <div class="popular__goods-slider slider">
+                                        {% for product in products_by_popularity%}
                                         <article class="slider__item">
                                             <div class="slider__item-img">
-                                                <img src="../static/Zoo/img/sliderImg.png" alt="item" />
+                                                <img style="object-fit: contain;" src="/media/{{product.productimage_set.first.image}}" alt="item" />
                                             </div>
-                                            <a href="#" class="slider__item-title">
-                                                Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..
+                                            <a href="{% url 'card_product' product.id%}" class="slider__item-title">
+                                                {{product.title}}
                                             </a>
                                             <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">85 <span>г.</span></li>
+                                                {% if product.productproperties_set.exists %}
+                                                    {% for property in product.productproperties_set.all %}
+                                                        <li class="slider__item-weight-list-item">{{property.weight}}<span>{{product.unit}}</span></li>
+                                                    {% endfor %}
+                                                {% else %}
+                                                        <li class="slider__item-weight-list-item">{{product.amount}}<span>{{product.unit}}</span></li>
+                                                {% endif %}
                                             </ul>
                                             <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
+                                                <p class="slider__item-price">{{product.price}} BYN</p>
                                                 <div class="slider__item-basket">
                                                     <div class="slider__item-basket-text">+</div>
                                                     <div class="slider__item-basket-img">
@@ -625,6 +632,7 @@
                                             </div>
                                             <button type="button" class="slider__item-btn">Купить в 1 клик</button>
                                         </article>
+                                        {% endfor %}
                                     </div>
                                     <button onclick="window.location.href='./catalog/';" class="popular__goods-btn button slider__button">
                                         Смотреть больше товаров
@@ -675,12 +683,12 @@
                                         </div>
                                     </div>
                                     <div class="new__product-slider slider">
-                                        {% for product in products %}
+                                        {% for product in products_by_date %}
                                             <article class="slider__item">
                                                 <div class="slider__item-img">
                                                     <img style="object-fit: contain;" src="/media/{{product.productimage_set.first.image}}" alt="item" />
                                                 </div>
-                                                <a href="#" class="slider__item-title">
+                                                <a href="{% url 'card_product'  product.id%}" class="slider__item-title">
                                                     {{product.title}}
                                                 </a>
                                                 <ul class="slider__item-weight-list">
