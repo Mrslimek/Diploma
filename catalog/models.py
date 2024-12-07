@@ -43,6 +43,15 @@ class Product(models.Model):
     product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
     date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
 
+    def price_with_discount(self):
+        promotions = self.promotion_set.all()
+        if promotions.exists():
+            discount = promotions.first().discount
+            final_price = round(self.price - (self.price * discount / 100), 2)
+            print(final_price)
+            return final_price
+
+        return self.price
 
     def __str__(self):
         return f'{self.title} --- {self.product_category}'

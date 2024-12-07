@@ -39,9 +39,15 @@ def catalog_filter_by_id(request, product_category_id):
 def catalog(request):
 
     products = Product.objects.all()
+    choices = [choice[0] for choice in Product.PRODUCT_TYPE_CHOICES]
+    brands = Brand.objects.all()
+    promotion = Promotion.objects.all()
 
     context = {
-        'products': products
+        'products': products,
+        'choices': choices,
+        'brands': brands,
+        'promotion': promotion,
     }
 
     return render(request, 'catalogZoo.html', context)
