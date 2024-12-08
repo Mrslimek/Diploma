@@ -19,3 +19,11 @@ def sub(value, arg):
 @register.filter
 def add(value, arg):
     return value + arg
+
+@register.filter(name='stringify')
+def stringify(value):
+    return str(value)
+
+@register.filter(name='lower')
+def lower(value):
+    return value.lower()

@@ -4,8 +4,7 @@ from .forms import RegisterForm, LoginForm, ResetForm
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .models import *
-
-# Create your views here.
+from django.http import JsonResponse
 
 def home(request):
 
@@ -31,8 +30,12 @@ def catalog_filter_by_id(request, product_category_id):
     choices = [choice[0] for choice in Product.PRODUCT_TYPE_CHOICES]
     brands = Brand.objects.all()
 
+    def get_category_name():
+        category = categories.get(id=product_category_id)
+        return category.name
 
     context = {
+        'category_name': get_category_name,
         'products': products,
         'choices': choices,
         'brands': brands,
@@ -64,15 +67,26 @@ def card_product(request, id):
     products = Product.objects.all()
     product = products.get(id=id)
     products_by_popularity = products.order_by('-popularity')
-    products_by_type = products.filter(product_type=product.product_type)
+    products_by_category = products.filter(product_category=product.product_category)
+    print(product.product_category)
 
     context = {
         'product': product,
         'products_by_popularity': products_by_popularity,
-        'products_by_type': products_by_type,
+        'products_by_category': products_by_category,
         }
 
     return render(request, 'cardProduct.html', context)
+
+def filter_products_by_type(request):
+
+    data = {
+        'message': "success"
+    }
+
+    print('-----------------------------------------------------',data, '------------------------------------------------------')
+
+    return JsonResponse(data)
 
 def brands(request):
 

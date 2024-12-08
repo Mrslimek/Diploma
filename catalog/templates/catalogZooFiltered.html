@@ -1,3 +1,5 @@
+{% load custom_filters %}
+
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -385,11 +387,18 @@
                         <div class="container">
                             <div class="filter__wrap">
                                 {% for category in categories %}
-                                <a href="{% url 'filtered_products' category.id %}" class="filter__item">
-                                    <div class="filter__item-img" style="background-image: url(/media/{{category.image}});">
-                                    </div>
-                                    <h3 class="filter__item-text">{{category.name}}</h3>
-                                </a>
+                                    {% if category.name|stringify == category_name|stringify %}
+                                        <a href="{% url 'filtered_products' category.id %}" class="filter__item filter__item-active">
+                                            <div class="filter__item-img" style="background-image: url(/media/{{category.image}});"></div>
+                                            <h3 class="filter__item-text">{{category.name}}</h3>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'filtered_products' category.id %}" class="filter__item">
+                                            <div class="filter__item-img" style="background-image: url(/media/{{category.image}});">
+                                            </div>
+                                            <h3 class="filter__item-text">{{category.name}}</h3>
+                                        </a>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -398,7 +407,7 @@
                         <div class="container">
                             <div class="catalog__wrap">
                                 <div class="catalog__title-wrap">
-                                    <h1 class="catalog__title">Каталог товаров <span>для</span></h1>
+                                        <h1 class="catalog__title">Каталог товаров <span>для</span> {{category_name|lower}}</h1>
                                     <div class="catalog__sort">
                                         <div class="catalog__sort-text">Сортировать по:</div>
                                         <div class="catalog__sort-select">
@@ -501,8 +510,8 @@
                                         <ul class="filter__type-list">
                                             {% for choice in choices %}
                                                 <li class="filter__type-list-item">
-                                                    <input type="radio" id="fodder" name="type" class="filter__type-list-item-hdie">
-                                                    <label for="fodder" class="filter__type-list-item-label">
+                                                    <input type="radio" id="fodder_{{forloop.counter}}" name="type" class="filter__type-list-item-hdie">
+                                                    <label for="fodder_{{forloop.counter}}" class="filter__type-list-item-label">
                                                         <div>
         
                                                         </div>
@@ -540,8 +549,8 @@
                                         <ul class="brand__list">
                                             {% for brand in brands %}
                                                 <li class="brand__list-item">
-                                                    <input type="checkbox" id="brand" name="type" class="brand__type-list-item-hdie">
-                                                    <label for="brand" class="brand__list-item-label">
+                                                    <input type="checkbox" id="brand_{{forloop.counter}}" name="type" class="brand__type-list-item-hdie">
+                                                    <label for="brand_{{forloop.counter}}" class="brand__list-item-label">
                                                         <div>
 
                                                         </div>
@@ -565,10 +574,12 @@
                                                     <div class="products___item-img">
                                                         <img src="/media/{{product.productimage_set.first.image}}" alt="item" />
                                                     </div>
-                                                    <div class="products___item-promotion">
-                                                        Акция
-                                                    </div>
-                                                    <a href="#" class="products___item-title">
+                                                    {% if product.promotion_set.exists %}
+                                                        <div class="products___item-promotion">
+                                                            Акция
+                                                        </div>
+                                                    {% endif %}
+                                                    <a href="{% url 'card_product' product.id %}" class="products___item-title">
                                                         {{product.title}}
                                                     </a>
                                                     <ul class="products___item-weight-list">
@@ -581,10 +592,12 @@
                                                         {% endif %}
                                                     </ul>
                                                     <div class="products___item-price-basket">
-                                                        <p class="products___item-price-promotion">
-                                                            {{product.price}} BYN
-                                                        </p>
-                                                        <p class="products___item-price">{{product.price}} BYN</p>
+                                                        {% if product.promotion_set.exists %}
+                                                            <p class="products___item-price-promotion">{{product.price}} BYN</p>
+                                                            <p class="products___item-price">{{product.price_with_discount}} BYN</p>
+                                                        {% else %}
+                                                            <p class="products___item-price">{{product.price}} BYN</p>
+                                                        {% endif %}
                                                         <div class="products___item-basket">
                                                             <div class="slider__item-basket-text">+</div>
                                                             <div class="slider__item-basket-img">

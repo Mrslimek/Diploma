@@ -1,4 +1,5 @@
 {% load custom_filters %}
+{% url 'filter_by_type' choice.id as filter_by_type %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -400,7 +401,7 @@
                         <div class="container">
                             <div class="catalog__wrap">
                                 <div class="catalog__title-wrap">
-                                    <h1 class="catalog__title">Каталог товаров <span>для</span></h1>
+                                    <h1 class="catalog__title">Каталог товаров</h1>
                                     <div class="catalog__sort">
                                         <div class="catalog__sort-text">Сортировать по:</div>
                                         <div class="catalog__sort-select">
@@ -503,8 +504,8 @@
                                         <ul class="filter__type-list">
                                             {% for choice in choices %}
                                                 <li class="filter__type-list-item">
-                                                    <input type="radio" id="fodder" name="type" class="filter__type-list-item-hdie">
-                                                    <label for="fodder" class="filter__type-list-item-label">
+                                                    <input onclick="window.location.href='{{filter_by_type}}';" type="radio" id="fodder_{{forloop.counter}}" name="type" class="filter__type-list-item-hdie">
+                                                    <label for="fodder_{{forloop.counter}}" class="filter__type-list-item-label">
                                                         <div>
         
                                                         </div>
@@ -542,8 +543,8 @@
                                         <ul class="brand__list">
                                             {% for brand in brands %}
                                                 <li class="brand__list-item">
-                                                    <input type="checkbox" id="brand" name="type" class="brand__type-list-item-hdie">
-                                                    <label for="brand" class="brand__list-item-label">
+                                                    <input type="checkbox" id="brand_{{forloop.counter}}" name="type" class="brand__type-list-item-hdie">
+                                                    <label for="brand_{{forloop.counter}}" class="brand__list-item-label">
                                                         <div>
 
                                                         </div>
@@ -555,9 +556,7 @@
                                             {% endfor %}
                                         </ul>
                                     </div>
-                                    <button type="button" class="filter__button">
-                                        Применить фильтры
-                                    </button>
+                                    <button type="button" class="filter__button">Применить фильтры</button>
                                 </aside>
                                 <div class="product__list-wrap">
                                     <ul class="products__list">
@@ -572,7 +571,7 @@
                                                             Акция
                                                         </div>
                                                     {% endif %}
-                                                    <a href="#" class="products___item-title">
+                                                    <a href="{% url 'card_product' product.id %}" class="products___item-title">
                                                         {{product.title}}
                                                     </a>
                                                     <ul class="products___item-weight-list">
@@ -1321,5 +1320,6 @@
         <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script defer src="../static/catalogZoo/js/slick.min.js"></script>
         <script defer src="../static/catalogZoo/js/slider.js"></script>
+        <script defer src="../static/catalogZoo/js/aside_filter.js"></script>
     </body>
 </html>

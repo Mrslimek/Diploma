@@ -697,7 +697,7 @@
                                                 <div class="slider__item-img">
                                                     <img style="object-fit: contain;" src="/media/{{p.productimage_set.first.image}}" alt="item" />
                                                 </div>
-                                                <a href="#" class="slider__item-title">
+                                                <a href="% url 'card_product' p.id %" class="slider__item-title">
                                                     {{p.title}}
                                                 </a>
                                                 <ul class="slider__item-weight-list">
@@ -786,12 +786,12 @@
                                         </div>
                                     </div>
                                     <div class="new__product-slider slider">
-                                        {% for p in products_by_type %}
+                                        {% for p in products_by_category %}
                                             <article class="slider__item">
                                                 <div class="slider__item-img">
                                                     <img style="object-fit: contain;" src="/media/{{p.productimage_set.first.image}}" alt="item" />
                                                 </div>
-                                                <a href="#" class="slider__item-title">
+                                                <a href="{% url 'card_product' p.id %}" class="slider__item-title">
                                                     {{p.title}}
                                                 </a>
                                                 <ul class="slider__item-weight-list">
