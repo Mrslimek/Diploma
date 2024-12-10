@@ -1,10 +1,11 @@
 {% load custom_filters %}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'catalogZoo/css/null.css' %}/>
         <link rel="stylesheet" href="../static/catalogZoo/css/null.css" />
         <link rel="stylesheet" href="../static/catalogZoo/css/style.css" />
         <title>Каталог</title>
@@ -503,7 +504,8 @@
                                         <ul class="filter__type-list">
                                             {% for choice in choices %}
                                                 <li class="filter__type-list-item">
-                                                    <input type="radio" id="fodder_{{forloop.counter}}" data-id="{{choice.id}}" name="type" class="filter__type-list-item-hdie">
+                                                    {% url 'filter_by_type' choice.id as filter_by_type %}
+                                                    <input onclick="window.location.href='{{filter_by_type}}';" type="radio" id="fodder_{{forloop.counter}}" name="type" class="filter__type-list-item-hdie">
                                                     <label for="fodder_{{forloop.counter}}" class="filter__type-list-item-label">
                                                         <div>
         
@@ -559,7 +561,7 @@
                                 </aside>
                                 <div class="product__list-wrap">
                                     <ul class="products__list">
-                                        {% for product in products %}
+                                        {% for product in products_filtered %}
                                             <li class="products__list-item">
                                                 <article class="products___item">
                                                     <div class="products___item-img">

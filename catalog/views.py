@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .models import *
 from django.http import JsonResponse
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProductSerializer, FilterProductSerializer
+ 
 def home(request):
 
     product_categories = ProductCategory.objects.exclude(name='Универсальный')
@@ -27,7 +30,7 @@ def catalog_filter_by_id(request, product_category_id):
     
     categories = ProductCategory.objects.exclude(name='Универсальный')
     products = Product.objects.filter(product_category_id=product_category_id) | Product.objects.filter(product_category_id='35')
-    choices = [choice[0] for choice in Product.PRODUCT_TYPE_CHOICES]
+    choices = ProductType.objects.all()
     brands = Brand.objects.all()
 
     def get_category_name():
@@ -42,13 +45,13 @@ def catalog_filter_by_id(request, product_category_id):
         'categories': categories,
     }
 
-    return render(request, 'catalogZooFiltered.html', context)
+    return render(request, 'catalogZooFilteredByCategory.html', context)
 
 def catalog(request):
 
     categories = ProductCategory.objects.exclude(name='Универсальный')
     products = Product.objects.all()
-    choices = [choice[0] for choice in Product.PRODUCT_TYPE_CHOICES]
+    choices = ProductType.objects.all()
     brands = Brand.objects.all()
     promotion = Promotion.objects.all()
 
@@ -78,15 +81,24 @@ def card_product(request, id):
 
     return render(request, 'cardProduct.html', context)
 
-def filter_products_by_type(request):
+def filter_products_by_type(request, product_type_id):
 
-    data = {
-        'message': "success"
+    categories = ProductCategory.objects.exclude(name='Универсальный')
+    products = Product.objects.all()
+    products_filtered = products.filter(product_type_id=product_type_id)
+    choices = ProductType.objects.all()
+    brands = Brand.objects.all()
+    promotion = Promotion.objects.all()
+
+    context = {
+        'products_filtered': products_filtered,
+        'choices': choices,
+        'brands': brands,
+        'categories': categories,
+        'promotion': promotion,
     }
 
-    print('-----------------------------------------------------',data, '------------------------------------------------------')
-
-    return JsonResponse(data)
+    return render(request, 'catalogZooFilteredByType.html', context)
 
 def brands(request):
 
@@ -142,3 +154,21 @@ def reset_password(request):
         form_data = ResetForm(request.POST)
 
     return render(request, 'reset_form.html', {'form': form})
+
+
+# APIView
+
+@api_view(['GET'])
+def get_products(request):
+
+    products = Product.objects.all()
+    serializer = FilterProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET', 'POST'])
+def get_products_filtered_by_type(request):
+
+    products = Product.objects.filter(product_type_id=request.data.get('product_type'))
+    serializer = FilterProductSerializer(products, many=True)
+    return Response(serializer.data)

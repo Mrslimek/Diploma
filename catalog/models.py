@@ -26,20 +26,25 @@ class ProductCategory(models.Model):
         verbose_name_plural = 'Категория товаров'
 
 
+class ProductType(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Тип продукта')
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Тип продукта'
+        verbose_name_plural = 'Типы продуктов'
+
+
 class Product(models.Model):
     UNIT_CHOICES = [('кг', 'кг'), ('л', 'л'), ('г', 'г'), ('шт', 'шт')]
-    PRODUCT_TYPE_CHOICES = [
-        ('Влажный корм', 'Влажный корм'), ('Сухой корм', 'Сухой корм'),
-        ('Игрушки', 'Игрушки'), ('Переноски', 'Переноски'),
-        ('Посуда', 'Посуда'), ('Клетки', 'Клетки'),
-        ('Впитывающий наполнитель', 'Впитывающий наполнитель'), ('Древесный наполнитель', 'Древесный наполнитель'),
-        ('Комкующийся наполнитель', 'Комкующийся наполнитель')]
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True, verbose_name='Название')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     amount = models.IntegerField(verbose_name='Кол-во продукта')
     unit = models.CharField(max_length=255, choices=UNIT_CHOICES, verbose_name='Единица измерения')
-    product_type = models.CharField(max_length=255, choices=PRODUCT_TYPE_CHOICES, verbose_name='Тип продукта')
+    product_type = models.ForeignKey('ProductType', on_delete=models.CASCADE, verbose_name='Тип продукта', null=True)
     product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
     date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
     popularity = models.IntegerField(verbose_name='Популярность продукта', default=0)
