@@ -1,23 +1,66 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let radioButtons = document.querySelectorAll('input[name="type"]');
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    function updateLocalStorage(key, value, add) {
+        if (key === "brand-ids") {
+            let currentArray = JSON.parse(localStorage.getItem(key)) || [];
+            if (!Array.isArray(currentArray)) {
+                currentArray = [];
+            }
+            if (add) {
+                if (!currentArray.includes(value)) {
+                    currentArray.push(value);
+                }
+            } else {
+                currentArray = currentArray.filter(item => item !== value);
+            }
+            localStorage.setItem(key, JSON.stringify(currentArray));
+        } else {
+            if (add) {
+                localStorage.setItem(key, value);
+            } else {
+                localStorage.removeItem(key);
+            }
+        }
+    }
+
+    function getLocalStorageData() {
+        return {
+            typeId: localStorage.getItem("type-id"),
+            brandIds: JSON.parse(localStorage.getItem("brand-ids")) || [],
+            productCategoryId: document.getElementById("filter_item_active").getAttribute('data_id')
+        };
+    }
 
     radioButtons.forEach(function(radioButton) {
         radioButton.addEventListener('click', function() {
-            let id = this.getAttribute('data-id');
-            myFunction(this.value, id);
+            const typeId = this.getAttribute("type-id");
+            if (typeId) {
+                updateLocalStorage("type-id", typeId, true);
+            }
+            const data = getLocalStorageData();
+            filterProducts(this.value, data.typeId, data.brandIds.map(id => parseInt(id, 10)), data.productCategoryId);
+        });
+    });
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const brandId = this.getAttribute("brand-id");
+            updateLocalStorage("brand-ids", brandId, checkbox.checked);
+            const data = getLocalStorageData();
+            filterProducts(this.value, data.typeId, data.brandIds.map(id => parseInt(id, 10)), data.productCategoryId);
         });
     });
 });
 
-function myFunction(value, id) {
-
+function filterProducts(value, typeId = null, brandIds = [], productCategoryId) {
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             const cookies = document.cookie.split(';');
             for (let i = 0; i < cookies.length; i++) {
                 const cookie = cookies[i].trim();
-                // Проверяем, начинается ли этот cookie с нужного имени
                 if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                     break;
@@ -28,7 +71,35 @@ function myFunction(value, id) {
     }
     
     const csrftoken = getCookie('csrftoken');
-    
+
+    function getBodyDataForFilters(typeId, brandIds, productCategoryId) {
+        let bodyData;
+
+        if (typeId && brandIds.length) {
+            bodyData = JSON.stringify({
+                'product_type': typeId,
+                'brand': brandIds,
+                'product_category': productCategoryId
+            });
+        } else if (typeId) {
+            bodyData = JSON.stringify({
+                'product_type': typeId,
+                'product_category': productCategoryId
+            });
+        } else if (brandIds.length) {
+            bodyData = JSON.stringify({
+                'brand': brandIds,
+                'product_category': productCategoryId
+            });
+        } else {
+            throw new Error('Нет данных для отправки');
+        }
+
+        console.log(bodyData);
+        return bodyData;
+    }
+
+    const bodyData = getBodyDataForFilters(typeId, brandIds, productCategoryId);
     
     fetch('http://127.0.0.1:8000/api/filtered_products/', {
         method: 'POST',
@@ -36,26 +107,27 @@ function myFunction(value, id) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({
-            'product_type': id
-        })
+        body: bodyData
     })
     .then(response => {
         if (response.ok) {
-            console.log('Success');
-            return response.json()
+            return response.json();
         } else {
-            console.log('Не получилось')} 
-            console.log(id);
-        })
+            throw new Error(`Запрос не получился - статус ${response.status}`);
+        }
+    })
     .then(data => {
         console.log(data);
-        renderProducts(data);
+        renderProducts(data); // Ваша функция для отображения продуктов
     })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
+}
 
-    function renderProducts(products) {
-        const container = document.querySelector('.product__list-wrap .products__list'); // Указываем контейнер
-        container.innerHTML = ''; // Очищаем контейнер перед добавлением новых элементов
+function renderProducts(products) {
+        const container = document.querySelector('.product__list-wrap .products__list');
+        container.innerHTML = '';
     
         products.forEach(product => {
             // Создаем HTML элементы
@@ -157,9 +229,11 @@ function myFunction(value, id) {
             productTitle.classList.add('products___item-title');
             productTitle.textContent = product.title;
 
-            // TODO: Кнопка класса products___item-btn, добавить в фильтру
-    
-            // Добавляем элементы в DOM
+            const productBuyButton = document.createElement('button');
+            productBuyButton.type = 'button';
+            productBuyButton.classList.add('products___item-btn');
+            productBuyButton.textContent = 'Купить в 1 клик';
+
             productArticle.appendChild(productImgDiv);
             productArticle.appendChild(productTitle);
             if (productPromotionDiv) {
@@ -173,23 +247,22 @@ function myFunction(value, id) {
 
             } else {
 
-                productArticle.appendChild(productWeight)
+                productArticle.appendChild(productWeight);
 
             };
             if (product.promotion_set && product.promotion_set > 0) {
              
-                productArticle.appendChild(productItemPriceBasket)
+                productArticle.appendChild(productItemPriceBasket);
 
             } else {
 
-                productArticle.appendChild(productItemPriceBasket)
+                productArticle.appendChild(productItemPriceBasket);
 
             };
+            productArticle.appendChild(productBuyButton);
 
             productItem.appendChild(productArticle);
             container.appendChild(productItem);
 
         });
-    }
-    
-}
+    };

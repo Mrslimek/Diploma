@@ -11,7 +11,7 @@ from .serializers import ProductSerializer, FilterProductSerializer
  
 def home(request):
 
-    product_categories = ProductCategory.objects.exclude(name='Универсальный')
+    product_categories = ProductCategory.objects.all()
     products = Product.objects.all()
     products_by_date = products.order_by('-date_added')
     products_by_popularity = products.order_by('-popularity')
@@ -28,11 +28,11 @@ def home(request):
 
 def catalog_filter_by_id(request, product_category_id):
     
-    categories = ProductCategory.objects.exclude(name='Универсальный')
-    products = Product.objects.filter(product_category_id=product_category_id) | Product.objects.filter(product_category_id='35')
+    categories = ProductCategory.objects.all()
+    products = Product.objects.filter(product_category=product_category_id)
     choices = ProductType.objects.all()
-    brands = Brand.objects.all()
-
+    brands = Brand.objects.filter(product_category=product_category_id)
+    
     def get_category_name():
         category = categories.get(id=product_category_id)
         return category.name
@@ -49,14 +49,16 @@ def catalog_filter_by_id(request, product_category_id):
 
 def catalog(request):
 
-    categories = ProductCategory.objects.exclude(name='Универсальный')
+    categories = ProductCategory.objects.all()
     products = Product.objects.all()
+    prods_by_popularity = products.order_by('-popularity')
     choices = ProductType.objects.all()
     brands = Brand.objects.all()
     promotion = Promotion.objects.all()
 
     context = {
         'products': products,
+        'prods_by_popularity': prods_by_popularity,
         'choices': choices,
         'brands': brands,
         'promotion': promotion,
@@ -83,7 +85,7 @@ def card_product(request, id):
 
 def filter_products_by_type(request, product_type_id):
 
-    categories = ProductCategory.objects.exclude(name='Универсальный')
+    categories = ProductCategory.objects.all()
     products = Product.objects.all()
     products_filtered = products.filter(product_type_id=product_type_id)
     choices = ProductType.objects.all()
@@ -115,7 +117,7 @@ def basket(request):
 
 def articles(request):
 
-    categories = ProductCategory.objects.exclude(name='Универсальный')
+    categories = ProductCategory.objects.all()
 
     return render(request, 'articles.html', {'categories': categories})
 
@@ -167,8 +169,15 @@ def get_products(request):
 
 
 @api_view(['GET', 'POST'])
-def get_products_filtered_by_type(request):
+def get_products_filtered(request):
 
-    products = Product.objects.filter(product_type_id=request.data.get('product_type'))
+    filters = {}
+    filters['product_category'] = request.data.get('product_category')
+    if request.data.get('product_type'):
+        filters['product_type_id'] = request.data.get('product_type')
+    if request.data.get('brand'):
+        filters['brand_id__in'] = request.data.get('brand')
+
+    products = Product.objects.filter(**filters)
     serializer = FilterProductSerializer(products, many=True)
     return Response(serializer.data)

@@ -893,7 +893,7 @@
 }
 
 .brand__search {
-  display: flex;
+  display: none;
   position: relative;
   margin-bottom: 9px;
 }

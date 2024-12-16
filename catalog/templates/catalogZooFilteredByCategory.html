@@ -388,7 +388,7 @@
                             <div class="filter__wrap">
                                 {% for category in categories %}
                                     {% if category.name|stringify == category_name|stringify %}
-                                        <a href="{% url 'filtered_products' category.id %}" class="filter__item filter__item-active">
+                                        <a href="{% url 'filtered_products' category.id %}" id="filter_item_active" data_id="{{category.id}}" class="filter__item filter__item-active">
                                             <div class="filter__item-img" style="background-image: url(/media/{{category.image}});"></div>
                                             <h3 class="filter__item-text">{{category.name}}</h3>
                                         </a>
@@ -510,7 +510,7 @@
                                         <ul class="filter__type-list">
                                             {% for choice in choices %}
                                                 <li class="filter__type-list-item">
-                                                    <input type="radio" id="fodder_{{forloop.counter}}" name="type" class="filter__type-list-item-hdie">
+                                                    <input type="radio" id="fodder_{{forloop.counter}}" name="type" type-id="{{choice.id}}" class="filter__type-list-item-hdie">
                                                     <label for="fodder_{{forloop.counter}}" class="filter__type-list-item-label">
                                                         <div>
         
@@ -549,7 +549,7 @@
                                         <ul class="brand__list">
                                             {% for brand in brands %}
                                                 <li class="brand__list-item">
-                                                    <input type="checkbox" id="brand_{{forloop.counter}}" name="type" class="brand__type-list-item-hdie">
+                                                    <input type="checkbox" id="brand_{{forloop.counter}}" name="type" brand-id="{{brand.id}}" class="brand__type-list-item-hdie">
                                                     <label for="brand_{{forloop.counter}}" class="brand__list-item-label">
                                                         <div>
 
@@ -1326,5 +1326,6 @@
         <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script defer src="../static/catalogZoo/js/slick.min.js"></script>
         <script defer src="../static/catalogZoo/js/slider.js"></script>
+        <script defer src="../static/catalogZoo/js/aside_filter_for_types.js"></script>
     </body>
 </html>

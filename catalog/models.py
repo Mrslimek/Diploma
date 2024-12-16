@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Brand(models.Model):
     name = models.CharField(max_length=255, unique=True, verbose_name='Название продукта')
     image = models.FileField(verbose_name='Картинка бренда')
+    product_category = models.ManyToManyField('ProductCategory')
 
     def __str__(self):
         return self.name
@@ -45,7 +46,7 @@ class Product(models.Model):
     amount = models.IntegerField(verbose_name='Кол-во продукта')
     unit = models.CharField(max_length=255, choices=UNIT_CHOICES, verbose_name='Единица измерения')
     product_type = models.ForeignKey('ProductType', on_delete=models.CASCADE, verbose_name='Тип продукта', null=True)
-    product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
+    product_category = models.ManyToManyField('ProductCategory')
     date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
     popularity = models.IntegerField(verbose_name='Популярность продукта', default=0)
 
@@ -59,7 +60,7 @@ class Product(models.Model):
         return self.price
 
     def __str__(self):
-        return f'{self.title} --- {self.product_category}'
+        return f'{self.title}'
     
     class Meta:
         verbose_name = 'Продукт'
