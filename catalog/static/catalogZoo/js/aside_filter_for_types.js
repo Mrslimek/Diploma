@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    localStorage.clear(); //TODO: Добавить в каталог по категориям фильрацию по акционным товарам и по вкладке 'сортировать по'
+
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -118,7 +121,7 @@ function filterProducts(value, typeId = null, brandIds = [], productCategoryId) 
     })
     .then(data => {
         console.log(data);
-        renderProducts(data); // Ваша функция для отображения продуктов
+        renderProducts(data);
     })
     .catch(error => {
         console.error('Ошибка:', error);
