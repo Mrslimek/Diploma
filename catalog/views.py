@@ -172,9 +172,12 @@ def get_products(request):
 def get_products_filtered(request):
 
     filters = {}
+
     filters['product_category'] = request.data.get('product_category')
+
     if request.data.get('product_type'):
         filters['product_type_id'] = request.data.get('product_type')
+        
     if request.data.get('brand'):
         filters['brand_id__in'] = request.data.get('brand')
 
