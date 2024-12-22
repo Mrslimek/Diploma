@@ -432,32 +432,32 @@
                                                 </svg>
                                             </div>
                                             <ul class="catalog__sort-select-list">
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="-date_added">
                                                     <p>
                                                         дате добавления
                                                     </p>
                                                 </li>
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="title">
                                                     <p>
                                                         названию: «от А до Я»
                                                     </p>
                                                 </li>
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="-title">
                                                     <p>
                                                         названию: «от Я до А»
                                                     </p>
                                                 </li>
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="price">
                                                     <p>
                                                         цене по возр.
                                                     </p>
                                                 </li>
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="-price">
                                                     <p>
                                                         цене по убыв.
                                                     </p>
                                                 </li>
-                                                <li class="catalog__sort-select-list-item">
+                                                <li class="catalog__sort-select-list-item" orderByData="-popularity">
                                                     <p>
                                                         популярности
                                                     </p>
@@ -494,7 +494,7 @@
                             <div class="products__wrap">
                                 <aside class="catalog__filter-mob">
                                     <div for="promotional" class="promotional__item">
-                                        <input type="checkbox" name="promotional" id="promotional" class="promotional__item-input-hide">
+                                        <input type="checkbox" name="promotional" id="promotional" promotion="1" class="promotional__item-input-hide">
                                         <label for="promotional" class="promotional__item-label">
                                             <div>
                                             </div>
@@ -568,7 +568,7 @@
                                 </aside>
                                 <div class="product__list-wrap">
                                     <ul class="products__list">
-                                        {% for product in products %}
+                                        {% for product in page_obj %}
                                             <li class="products__list-item">
                                                 <article class="products___item">
                                                     <div class="products___item-img">
@@ -624,44 +624,43 @@
                                         {% endfor %}
                                     </ul>
                                     <div class="products__pagination">
-                                        <div class="products__prev">
-                                            <div class="products__prev-img">
-                                                <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <desc>
-                                                            Created with Pixso.
-                                                    </desc>
-                                                    <defs/>
-                                                    <path id="Primary fill" d="M9.6001 12.7998C9.39502 12.7998 9.19043 12.7214 9.03418 12.5654L5.03418 8.56543C4.72168 8.25269 4.72168 7.74707 5.03418 7.43433L9.03418 3.43433C9.34717 3.12158 9.85303 3.12158 10.1655 3.43433C10.4785 3.74707 10.4785 4.25269 10.1655 4.56543L6.73145 8L10.1655 11.4343C10.4785 11.7471 10.4785 12.2527 10.1655 12.5654C10.0098 12.7214 9.80469 12.7998 9.6001 12.7998Z" fill="#00A0AC" fill-opacity="1.000000" fill-rule="evenodd"/>
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Предыдущая
-                                            </p>
+                                        <div class="products__prev" id="productsPrev" pageData="{% if page_obj.has_previous %}{{ page_obj.previous_page_number }}{% endif %}">
+                                            {% if page_obj.has_previous %}
+                                                <div class="products__prev-img">
+                                                    <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <desc>
+                                                                Created with Pixso.
+                                                        </desc>
+                                                        <defs/>
+                                                        <path id="Primary fill" d="M9.6001 12.7998C9.39502 12.7998 9.19043 12.7214 9.03418 12.5654L5.03418 8.56543C4.72168 8.25269 4.72168 7.74707 5.03418 7.43433L9.03418 3.43433C9.34717 3.12158 9.85303 3.12158 10.1655 3.43433C10.4785 3.74707 10.4785 4.25269 10.1655 4.56543L6.73145 8L10.1655 11.4343C10.4785 11.7471 10.4785 12.2527 10.1655 12.5654C10.0098 12.7214 9.80469 12.7998 9.6001 12.7998Z" fill="#00A0AC" fill-opacity="1.000000" fill-rule="evenodd"/>
+                                                    </svg>
+                                                </div>
+                                                <p>Предыдущая</p>
+                                            {% endif %}
                                         </div>
                                         <ul class="products__pagination-list">
-                                            <li class="products__pagination-list-item products__pagination-list-item-active">
-                                                1
-                                            </li>
-                                            <li class="products__pagination-list-item">
-                                                2
-                                            </li>
-                                            <li class="products__pagination-list-item">
-                                                3
-                                            </li>
+                                            {% for num in page_obj.paginator.page_range %}
+                                                <li class="products__pagination-list-item {% if page_obj.number == num %}products__pagination-list-item-active{% endif %}" id="pageNum{{forloop.counter}}" pageData="{{num}}">
+                                                    {{ num }}
+                                                </li>
+                                            {% endfor %}
                                         </ul>
-                                        <div class="products__next">
-                                            <p>
-                                                Следующая
-                                            </p>
-                                            <div class="products__next-img">
-                                                <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <desc>
-                                                            Created with Pixso.
-                                                    </desc>
-                                                    <defs/>
-                                                    <path id="Primary fill" d="M6.3999 12.7998C6.19482 12.7998 5.99023 12.7214 5.83398 12.5654C5.52148 12.2527 5.52148 11.7471 5.83398 11.4343L9.26855 8L5.83398 4.56543C5.52148 4.25269 5.52148 3.74707 5.83398 3.43433C6.14697 3.12158 6.65283 3.12158 6.96533 3.43433L10.9653 7.43433C11.2783 7.74707 11.2783 8.25269 10.9653 8.56543L6.96533 12.5654C6.80957 12.7214 6.60449 12.7998 6.3999 12.7998Z" fill="#00A0AC" fill-opacity="1.000000" fill-rule="evenodd"/>
-                                                </svg>
-                                            </div>
+                                        <div class="products__next" id="productsNext" pageData="{% if page_obj.has_next %}{{page_obj.next_page_number}}{% endif %}">
+                                            {% if page_obj.has_next %}
+                                                    <p>
+                                                        Следующая
+                                                    </p>
+                                                    <div class="products__next-img">
+                                                        <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <desc>
+                                                                Created with Pixso.
+                                                        </desc>
+                                                        <defs/>
+                                                        <path id="Primary fill" d="M6.3999 12.7998C6.19482 12.7998 5.99023 12.7214 5.83398 12.5654C5.52148 12.2527 5.52148 11.7471 5.83398 11.4343L9.26855 8L5.83398 4.56543C5.52148 4.25269 5.52148 3.74707 5.83398 3.43433C6.14697 3.12158 6.65283 3.12158 6.96533 3.43433L10.9653 7.43433C11.2783 7.74707 11.2783 8.25269 10.9653 8.56543L6.96533 12.5654C6.80957 12.7214 6.60449 12.7998 6.3999 12.7998Z" fill="#00A0AC" fill-opacity="1.000000" fill-rule="evenodd"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            {% endif %} 
                                         </div>
                                     </div>
                                 </div>
@@ -710,183 +709,58 @@
                                         </div>
                                     </div>
                                     <div class="popular__goods-slider slider">
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/catalogZoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title">
-                                                Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..
-                                            </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
+                                        {% for p in products_by_popularity %}
+                                            <article class="slider__item">
+                                                <div class="slider__item-img">
+                                                    <img style="object-fit: contain;" src="/media/{{p.productimage_set.first.image}}" alt="item" />
+                                                </div>
+                                                {% if p.promotion_set.exists %}
+                                                    <div class="slider__item-promotion">
+                                                        Акция
+                                                    </div>
+                                                {% endif %}
+                                                <a href="{% url 'card_product' p.id %}" class="slider__item-title">
+                                                    {{p.title}}
+                                                </a>
+                                                <ul class="slider__item-weight-list">
+                                                    {% if p.productproperties_set.exists %}
+                                                        {% for property in p.productproperties_set.all %}
+                                                            <li class="slider__item-weight-list-item">{{property.weight}} {{p.unit}}</li>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <li class="slider__item-weight-list-item">{{p.amount}} {{p.unit}}</li>
+                                                    {% endif %}
+                                                </ul>
+                                                <div class="slider__item-price-basket">
+                                                    {% if p.promotion_set.exists %}
+                                                        <p class="slider__item-price-promotion">{{p.price}} BYN</p>
+                                                        <p class="slider__item-price">{{p.price_with_discount}} BYN</p>
+                                                    {% else %}
+                                                        <p class="slider__item-price">{{p.price}} BYN</p>
+                                                    {% endif %}
+                                                    <div class="slider__item-basket">
+                                                        <div class="slider__item-basket-text">+</div>
+                                                        <div class="slider__item-basket-img">
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="20"
+                                                                height="20"
+                                                                viewBox="0 0 20 20"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    clip-rule="evenodd"
+                                                                    d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
+                                                                    fill="#5C5F62"
+                                                                />
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/catalogZoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 2 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/catalogZoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 3 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/catalogZoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 4 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
-                                        <article class="slider__item">
-                                            <div class="slider__item-img">
-                                                <img src="../static/catalogZoo/img/sliderImg.png" alt="item" />
-                                            </div>
-                                            <a href="#" class="slider__item-title"> 5 </a>
-                                            <ul class="slider__item-weight-list">
-                                                <li class="slider__item-weight-list-item">15 кг</li>
-                                                <li class="slider__item-weight-list-item">20 кг</li>
-                                                <li class="slider__item-weight-list-item">445 кг</li>
-                                                <li class="slider__item-weight-list-item">1000 кг</li>
-                                            </ul>
-                                            <div class="slider__item-price-basket">
-                                                <p class="slider__item-price">12 BYN</p>
-                                                <div class="slider__item-basket">
-                                                    <div class="slider__item-basket-text">+</div>
-                                                    <div class="slider__item-basket-img">
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="20"
-                                                            height="20"
-                                                            viewBox="0 0 20 20"
-                                                            fill="none"
-                                                        >
-                                                            <path
-                                                                fill-rule="evenodd"
-                                                                clip-rule="evenodd"
-                                                                d="M1 1C1 0.447715 1.44932 0 2.00358 0H3.50894C4.34034 0 5.01431 0.671572 5.01431 1.5V2.06055L17.5883 2.96818C18.4651 3.02278 19.1089 3.81081 18.9846 4.67739L18.1194 10.7121C18.0135 11.4511 17.3783 12 16.6292 12H5.01431V14H15.0572C16.72 14 18.068 15.3431 18.068 17C18.068 18.6569 16.72 20 15.0572 20C13.3945 20 12.0465 18.6569 12.0465 17C12.0465 16.6494 12.1069 16.3128 12.2178 16H6.85015C6.9611 16.3128 7.02147 16.6494 7.02147 17C7.02147 18.6569 5.67352 20 4.01073 20C2.34795 20 1 18.6569 1 17C1 15.6938 1.83779 14.5825 3.00716 14.1707V3.00923C3.00711 3.00372 3.00711 2.99821 3.00716 2.99268V2H2.00358C1.44932 2 1 1.55228 1 1ZM5.01431 4.06445V10H16.194L16.9208 4.93051L5.01431 4.06445ZM14.0537 17C14.0537 16.4477 14.503 16 15.0572 16C15.6115 16 16.0608 16.4477 16.0608 17C16.0608 17.5523 15.6115 18 15.0572 18C14.503 18 14.0537 17.5523 14.0537 17ZM3.00716 17C3.00716 16.4477 3.45647 16 4.01073 16C4.56499 16 5.01431 16.4477 5.01431 17C5.01431 17.5523 4.56499 18 4.01073 18C3.45647 18 3.00716 17.5523 3.00716 17Z"
-                                                                fill="#5C5F62"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="slider__item-btn">Купить в 1 клик</button>
-                                        </article>
+                                                <button type="button" class="slider__item-btn">Купить в 1 клик</button>
+                                            </article>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

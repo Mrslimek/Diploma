@@ -116,6 +116,7 @@ class Promotion(models.Model):
     start_date = models.DateTimeField(verbose_name='Дата начала акции')
     end_date = models.DateTimeField(verbose_name='Дата окончания акции')
 
+
     def is_active(self):
         from django.utils import timezone
         return self.start_date <= timezone.now() <= self.end_date

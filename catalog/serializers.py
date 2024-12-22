@@ -37,7 +37,7 @@ class ProductPropertiesSerializer(serializers.ModelSerializer):
         fields = ['id', 'weight', 'price']
 
 
-class PromotionSerializer():
+class PromotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Promotion
         fields = '__all__'
@@ -46,7 +46,7 @@ class PromotionSerializer():
 class FilterProductSerializer(serializers.ModelSerializer):
     productimage_set = ProductImageSerializer(many=True)
     productproperties_set = ProductPropertiesSerializer(many=True)
-    promotion_set = PromotionSerializer()
+    promotion_set = PromotionSerializer(many=True)
     brand = BrandSerializer()
     product_category = ProductCategorySerializer()
     product_type = ProductTypeSerializer()
