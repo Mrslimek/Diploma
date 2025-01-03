@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     localStorage.clear(); //TODO: Сделать так, чтобы при обновлении страницы стандартным способ сбрасывались и кнопки
 
-    const radioButtons = document.querySelectorAll("input[type='radio']");
-    const checkboxes = document.querySelectorAll("input[class='brand__type-list-item-hdie']");
+    const brandCheckboxes = document.querySelectorAll("input[class='brand__type-list-item-hdie']");
 
     /*Обновляет localStorage
      * Если brandIds нет в localStorage, то создает пустой массив и push-ит в него значение и добавляет в localStorage
@@ -51,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Просто получаем данные из localStorage
     function getLocalStorageData() {
         return {
-            typeId: localStorage.getItem("type-id"),
             brandIds: JSON.parse(localStorage.getItem("brand-ids")) || [],
-            productCategoryId: document.getElementById("filter_item_active").getAttribute("data_id"),
             promotion: JSON.parse(localStorage.getItem("promotion")),
             orderByData: localStorage.getItem("orderByData"),
             pageNumber: localStorage.getItem("pageNumber"),
@@ -70,9 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         filterProducts(
             this.value,
-            localStorageData.typeId,
             localStorageData.brandIds.map((id) => parseInt(id, 10)),
-            localStorageData.productCategoryId,
             localStorageData.promotion,
             localStorageData.orderByData,
             localStorage.pageNumber
@@ -91,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             filterProducts(
                 this.value,
-                localStorageData.typeId,
                 localStorageData.brandIds.map((id) => parseInt(id, 10)),
-                localStorageData.productCategoryId,
                 localStorageData.promotion,
                 localStorageData.orderByData,
                 localStorage.pageNumber
@@ -110,9 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         filterProducts(
             this.value,
-            localStorageData.typeId,
             localStorageData.brandIds.map((id) => parseInt(id, 10)),
-            localStorageData.productCategoryId,
             localStorageData.promotion,
             localStorageData.orderByData,
             localStorage.pageNumber
@@ -130,31 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let localStorageData = getLocalStorageData();
             filterProducts(
                 this.value,
-                localStorageData.typeId,
                 localStorageData.brandIds.map((id) => parseInt(id, 10)),
-                localStorageData.productCategoryId,
-                localStorageData.promotion,
-                localStorageData.orderByData,
-                localStorage.pageNumber
-            );
-        });
-    });
-
-    // Для каждой радио кнопки вызывает функцию, вызывает updateLocalStorage, вызывает функцию для fetch запроса
-    radioButtons.forEach(function (radioButton) {
-        radioButton.addEventListener("click", function () {
-            const typeId = this.getAttribute("type-id");
-            if (typeId) {
-                updateLocalStorage("type-id", typeId, true);
-            }
-
-            const localStorageData = getLocalStorageData();
-
-            filterProducts(
-                this.value,
-                localStorageData.typeId,
-                localStorageData.brandIds.map((id) => parseInt(id, 10)),
-                localStorageData.productCategoryId, //TODO: Разбораться с функцией в map
                 localStorageData.promotion,
                 localStorageData.orderByData,
                 localStorage.pageNumber
@@ -163,28 +130,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const promotionCheckbox = document.querySelector("input[class='promotional__item-input-hide']");
-    promotionCheckbox.addEventListener("change", function() {
-      const promotion = this.getAttribute("promotion");
-      updateLocalStorage("promotion", promotion, promotionCheckbox.checked);
+          promotionCheckbox.addEventListener("change", function() {
+            const promotion = this.getAttribute("promotion");
+            updateLocalStorage("promotion", promotion, promotionCheckbox.checked);
 
-      const localStorageData = getLocalStorageData();
+            const localStorageData = getLocalStorageData();
 
-      filterProducts(
-        this.value,
-        localStorageData.typeId,
-        localStorageData.brandIds.map((id) => parseInt(id, 10)),
-        localStorageData.productCategoryId,
-        localStorageData.promotion,
-        localStorageData.orderByData,
-        localStorage.pageNumber
-      );
-    });
+            filterProducts(
+                this.value,
+                localStorageData.brandIds.map((id) => parseInt(id, 10)),
+                localStorageData.promotion,
+                localStorageData.orderByData,
+                localStorage.pageNumber
+            );
+          });
 
     // Для каждого чекбокса (чекбоксы это brandIds и promotion) вызывает функцию, вызывает UpdateLocalStorage,
     // вызывает функцию для fetch запроса
-    checkboxes.forEach(function (checkbox) {
+    brandCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener("change", function () {
-
             const brandId = this.getAttribute("brand-id");
 
             updateLocalStorage("brand-ids", brandId, checkbox.checked);
@@ -193,9 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             filterProducts(
                 this.value,
-                localStorageData.typeId,
                 localStorageData.brandIds.map((id) => parseInt(id, 10)),
-                localStorageData.productCategoryId,
                 localStorageData.promotion,
                 localStorageData.orderByData,
                 localStorage.pageNumber
@@ -207,9 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Функция для fetch запроса
 function filterProducts(
     value,
-    typeId,
     brandIds,
-    productCategoryId,
     promotion,
     orderByData,
     pageNumber
@@ -237,9 +197,7 @@ function filterProducts(
 
     // Функция для создания json-а на основе полученых из localStorage данных
     function getBodyDataForFilters(
-        typeId,
         brandIds,
-        productCategoryId,
         promotion,
         orderByData,
         pageNumber
@@ -247,9 +205,7 @@ function filterProducts(
         let bodyData = {};
 
         let rawObject = {
-            product_type: typeId,
             brand: brandIds,
-            product_category: productCategoryId,
             promotion: promotion,
             order_by: orderByData,
             page_number: pageNumber,
@@ -266,9 +222,7 @@ function filterProducts(
 
     //Получение json-a для fetch запроса
     const bodyData = getBodyDataForFilters(
-        typeId,
         brandIds,
-        productCategoryId,
         promotion,
         orderByData,
         pageNumber

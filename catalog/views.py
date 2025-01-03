@@ -1,15 +1,20 @@
-from django.shortcuts import render
+# django
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView
-from .forms import RegisterForm, LoginForm, ResetForm
+from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-from .models import *
 from django.http import JsonResponse
+from django.forms import ValidationError
+# DRF
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+# Project
+from .forms import RegisterForm, LoginForm, ResetForm
 from .serializers import ProductSerializer, FilterProductSerializer
-from django.core.paginator import Paginator
- 
+from .models import *
+
 def home(request):
 
     product_categories = ProductCategory.objects.all()
@@ -30,6 +35,7 @@ def home(request):
 def catalog_filter_by_id(request, product_category_id):
     
     categories = ProductCategory.objects.all()
+    current_category = categories.get(id=product_category_id)
     products = Product.objects.filter(product_category=product_category_id)
     paginator = Paginator(products, 15)
     products_by_popularity = products.order_by('-popularity')
@@ -46,6 +52,7 @@ def catalog_filter_by_id(request, product_category_id):
 
     context = {
         'category_name': get_category_name,
+        'current_category': current_category,
         'products': products,
         'choices': choices,
         'brands': brands,
@@ -64,6 +71,9 @@ def catalog(request):
     choices = ProductType.objects.all()
     brands = Brand.objects.all()
     promotion = Promotion.objects.all()
+    paginator = Paginator(products, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'products': products,
@@ -72,6 +82,7 @@ def catalog(request):
         'brands': brands,
         'promotion': promotion,
         'categories': categories,
+        'page_obj': page_obj
     }
 
     return render(request, 'catalogZoo.html', context)
@@ -110,41 +121,63 @@ def articles(request):
 
     return render(request, 'articles.html', {'categories': categories})
 
-class RegisterView(CreateView):
-    form_class = RegisterForm
-    template_name = 'register.html'
-    success_url = reverse_lazy('login/')
+def register_user(request):
+    form = RegisterForm()
 
-    def form_valid(self, form):
-        # Создаем пользователя
-        user = form.save(commit=False)  # Не сохраняем сразу
-        user.set_password(form.cleaned_data['password'])  # Устанавливаем зашифрованный пароль
-        user.save()  # Сохраняем пользователя в базе данных
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('http://127.0.0.1:8000/login/')
+        if form.errors:
+            form = form
 
-        return super().form_valid(form)  # Возвращаем результат родительского метода
+    context = {
+        'form': form
+    }
 
-    def form_invalid(self, form):
-        # Если форма невалидна, возвращаем стандартный ответ
-        return super().form_invalid(form)
+    return render(request, 'register.html', context)
 
-def login(request):
+def login_user(request):
+
 
     form = LoginForm()
 
     if request.method == 'POST':
         form_data = LoginForm(data=request.POST)
-        
+        if form_data.is_valid():
+            username = form_data.cleaned_data.get('username')
+            password = form_data.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('http://127.0.0.1:8000/')
+        else:
+            form = form_data
 
     return render(request, 'login.html', {'form': form})
+
+def logout_user(request):
+    logout(request)
+    return redirect('http://127.0.0.1:8000/')
 
 def reset_password(request):
 
     form = ResetForm()
+    context = {'form': form}
 
     if request.method == 'POST':
         form_data = ResetForm(request.POST)
+        if form_data.is_valid():
+            email = form_data.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                message = 'На указанный адрес было отправлено письмо для восстановления пароля'
+                context['message'] = message
+            else:
+                message = 'Пользователя с таким email не существует'
+                context['message'] = message
 
-    return render(request, 'reset_form.html', {'form': form})
+    return render(request, 'reset_form.html', context)
 
 
 # APIView

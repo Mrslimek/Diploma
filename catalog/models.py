@@ -17,7 +17,7 @@ class Brand(models.Model):
 
 
 class ProductCategory(models.Model):
-    name = models.CharField(max_length=255, unique=True, verbose_name='Категория продукта')
+    name = models.CharField(max_length=255, unique=True, verbose_name='Категория продукта') 
     image = models.FileField(verbose_name='Картинка категории')
 
     def __str__(self):
@@ -30,6 +30,7 @@ class ProductCategory(models.Model):
 
 class ProductType(models.Model):
     name = models.CharField(max_length=255, verbose_name='Тип продукта')
+    product_category = models.ManyToManyField('ProductCategory', verbose_name='Категория продукта') #TODO: НАЗНАЧИТЬ КАЖДОМУ ТИПУ СВОЙ БРЕНД
 
     def __str__(self):
         return self.name
@@ -46,7 +47,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     amount = models.IntegerField(verbose_name='Кол-во продукта')
     unit = models.CharField(max_length=255, choices=UNIT_CHOICES, verbose_name='Единица измерения')
-    product_type = models.ForeignKey('ProductType', on_delete=models.CASCADE, verbose_name='Тип продукта', null=True)
+    product_type = models.ForeignKey('ProductType', on_delete=models.DO_NOTHING, verbose_name='Тип продукта')
     product_category = models.ManyToManyField('ProductCategory', verbose_name='Категория продукта')
     date_added = models.DateTimeField(verbose_name='Дата добавления продукта', null=True)
     popularity = models.IntegerField(verbose_name='Популярность продукта', default=0)

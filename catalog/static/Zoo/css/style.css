@@ -801,6 +801,35 @@
   gap: 16px;
 }
 
+.slider__item-promotion {
+  position: absolute;
+  top: 8px;
+  color: rgb(255, 255, 255);
+  font-family: SF Pro Text;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0px;
+  padding: 2px 8px;
+  background: #ff733b;
+  border-radius: 2px;
+  user-select: none;
+}
+
+.slider__item-price-promotion {
+  color: rgb(140, 145, 150);
+  font-family: SF Pro Text;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: 0px;
+  text-align: left;
+  text-decoration: line-through;
+    text-decoration-color: currentcolor;
+  text-decoration-color: red;
+  border: 1px dashed gainsboro;
+}
+
 .slider__item-price {
   color: var(--Text-Default, #202223);
   font-feature-settings: "clig" off, "liga" off;
